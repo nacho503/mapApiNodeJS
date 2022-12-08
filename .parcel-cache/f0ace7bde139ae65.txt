@@ -1,4 +1,4 @@
-4344
+4346
 92C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@msgpackr-extract133144896338866972 1
 107C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\src\public\Asset.js133144880303721406 0
 107C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\svgo\plugins\_applyTransforms.js133144880257626436 0
@@ -23,7 +23,7 @@
 118C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\workers\lib\process\ProcessChild.js133144880282066956 0
 103C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\electron-to-chromium\LICENSE133144880257074122 0
 116C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\css-tree\lib\syntax\node\ClassSelector.js133144880259905150 0
-66C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist133144930841611445 1
+66C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist133150032277321679 1
 106C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\regions\VN.js133144880277716917 0
 108C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\dist\lib\statuses.js133144880277103230 0
 87C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\yaml\browser133144880263952672 1
@@ -46,7 +46,7 @@
 119C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\reporter-dev-server\src\HMRServer.js133144880292978557 0
 97C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\picomatch\lib\parse.js133144885589009840 0
 102C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\workers\src\process133144880282114256 1
-72C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\index.html133144928275978793 0
+72C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\index.html133149993568187245 0
 79C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\package-lock.json133144896339111024 0
 121C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\css-motion-paths.js133144880271092502 0
 74C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules133144896338866972 1
@@ -70,10 +70,6 @@
 103C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\weak-lru-cache\tests\test.js133144880258545200 0
 95C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\lmdb\dependencies\v8133144880266213420 1
 92C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\binary-extensions133144885589067991 1
-91C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\msgpackr\pack.js133144880262914362 0
-115C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\type-fest\source\fixed-length-array.d.ts133144880260004268 0
-114C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\dommatrix.js133144880273528085 0
-82C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\src\js\controller.js133144930840187849 0
 104C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\v8-compile-cache\CHANGELOG.md133144880257855354 0
 92C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\lmdb\src\misc.cpp133144880265712997 0
 65C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\src133144896937146248 1
@@ -82,9 +78,12 @@
 116C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\font-smooth.js133144880273929104 0
 107C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\packager-js\src\utils.js133144880290859032 0
 109C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\src\resolveOptions.js133144880305714031 0
-68C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\src\js133144893093628892 1
+68C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\src\js133149993471375826 1
 98C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\node-addon-api\index.js133144880259936277 0
 80C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\src\sass\main.scss133144887469477147 0
+136C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\package-manager\test\validateModuleSpecifiers.test.js133144880307314736 0
+84C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\src\js\loginHandler.js133150033583297351 0
+98C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\picocolors\package.json133144880257807280 0
 106C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\regions\MG.js133144880275596677 0
 79C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\.bin133144885589612532 1
 102C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\svgo\plugins\_transforms.js133144880258738977 0
@@ -823,7 +822,7 @@
 100C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@types\parse-json\LICENSE133144880257074122 0
 106C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\regions\TW.js133144880277472130 0
 106C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\weak-lru-cache\rollup.config.js133144880258321794 0
-85C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.f7626f62.css133144930841122069 0
+85C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.f7626f62.css133150000005506646 0
 103C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\domutils\lib\legacy.d.ts.map133144880259716942 0
 95C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\weak-lru-cache\tests133144880258492933 1
 127C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\form-submit-attributes.js133144880273969178 0
@@ -981,6 +980,9 @@
 104C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\type-fest\source\entries.d.ts133144880259652257 0
 117C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\hash\parcel-hash.darwin-arm64.node133144880291513908 0
 102C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\type-fest\source\entry.d.ts133144880259727030 0
+91C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\msgpackr\pack.js133144880262914362 0
+115C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\type-fest\source\fixed-length-array.d.ts133144880260004268 0
+114C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\dommatrix.js133144880273528085 0
 113C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\type-fest\source\iterable-element.d.ts133144880260403337 0
 113C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\test\EntryRequest.test.js133144880304751930 0
 106C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\regions\PA.js133144880276130175 0
@@ -1667,7 +1669,6 @@
 106C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\regions\TR.js133144880277413440 0
 97C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\picomatch\lib\utils.js133144885589119191 0
 108C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\av1.js133144880263824356 0
-98C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\picocolors\package.json133144880257807280 0
 105C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\css-what\lib\es\stringify.d.ts133144880261604098 0
 94C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\picocolors\types.ts133144880258545200 0
 144C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\foo\package.json133144880276842054 0
@@ -2779,7 +2780,7 @@
 106C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\regions\BB.js133144880264403885 0
 106C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\regions\BE.js133144880264441932 0
 140C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\foo\index.js133144880276326957 0
-84C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.e37f48ea.js133144930841284339 0
+84C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.e37f48ea.js133149988006254706 0
 145C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\test\fixtures\invalid-target-source-not-file\package.json133144880306915322 0
 106C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\regions\BG.js133144880264562110 0
 106C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\regions\BT.js133144880265381022 0
@@ -3096,7 +3097,7 @@
 129C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\test\fixtures\targets-default-distdir-one133144880307054113 1
 122C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\deviceorientation.js133144880273413312 0
 101C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\optimizer-htmlnano133144880292097414 1
-88C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.e37f48ea.js.map133144930841334369 0
+88C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.e37f48ea.js.map133149988006284607 0
 121C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\devicepixelratio.js133144880273413312 0
 100C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\reporter-cli\test133144880294630113 1
 111C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\dialog.js133144880273413312 0
@@ -3278,7 +3279,7 @@
 114C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\png-alpha.js133144880276415314 0
 112C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\pointer.js133144880276486753 0
 112C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\portals.js133144880276506053 0
-94C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\mapAppFrontNode.3464ddca.js133144897001898587 0
+94C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\mapAppFrontNode.3464ddca.js133150000005481661 0
 103C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\optimizer-terser\src133144880293539024 1
 125C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\prefers-color-scheme.js133144880276529272 0
 127C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\caniuse-lite\data\features\prefers-reduced-motion.js133144880276529272 0
@@ -3909,7 +3910,6 @@
 99C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\packager-css\lib133144880290052469 1
 99C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\packager-css\src133144880290119611 1
 103C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\package-manager\test133144880307314736 1
-136C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\package-manager\test\validateModuleSpecifiers.test.js133144880307314736 0
 129C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\package-manager\test\fixtures\packages\foo-2.0133144880307539596 1
 127C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\package-manager\test\fixtures\packages\peers133144880307539596 1
 136C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\test\fixtures\common-targets-ignore\package.json133144880306612351 0
@@ -3942,6 +3942,7 @@
 116C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\optimizer-image\lib\loadNative.js133144880285905678 0
 114C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\optimizer-htmlnano\package.json133144880292097414 0
 120C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\optimizer-htmlnano\src\svgMappings.js133144880292078903 0
+84C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.b5b6448b.js133150032277281806 0
 126C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\optimizer-htmlnano\lib\HTMLNanoOptimizer.js133144880291928322 0
 120C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\optimizer-htmlnano\lib\svgMappings.js133144880292053864 0
 164C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\side-effects-false-glob\sub\index.js133144880276516134 0
@@ -4082,7 +4083,7 @@
 102C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\events\lib\index.js133144880295513243 0
 109C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\src\PackagerRunner.js133144880305212683 0
 101C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\diagnostic\LICENSE133144880295737922 0
-84C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.62406edb.js133144897001898587 0
+84C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.62406edb.js133149993367633649 0
 106C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\diagnostic\package.json133144880295970148 0
 97C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\diagnostic\src133144880295815069 1
 111C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\diagnostic\lib\diagnostic.js133144880295779896 0
@@ -4137,7 +4138,7 @@
 117C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\src\requests\TargetRequest.js133144880306142721 0
 121C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@jridgewell\trace-mapping\dist\types\sort.d.ts133144880259716942 0
 113C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\src\public\BundleGroup.js133144880304512688 0
-88C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.62406edb.js.map133144897001978824 0
+88C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.62406edb.js.map133149993367686440 0
 108C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\src\public\Config.js133144880304512688 0
 113C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\src\public\Environment.js133144880304812071 0
 115C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\src\public\PluginOptions.js133144880305507491 0
@@ -4152,7 +4153,7 @@
 109C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\lib\PackagerRunner.js133144880305212683 0
 106C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\lib\projectPath.js133144880305512585 0
 109C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\lib\ReporterRunner.js133144880305570040 0
-98C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\mapAppFrontNode.3464ddca.js.map133144897001978824 0
+98C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\mapAppFrontNode.3464ddca.js.map133150000005551800 0
 109C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\lib\resolveOptions.js133144880305703947 0
 105C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\lib\serializer.js133144880305726411 0
 111C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\@parcel\core\lib\summarizeRequest.js133144880305816625 0
@@ -4341,5 +4342,6 @@
 86C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\.bin\terser133144880308852227 0
 90C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\.bin\terser.cmd133144880308852227 0
 90C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\node_modules\.bin\terser.ps1133144880308852227 0
-89C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.f7626f62.css.map133144930841222079 0
-77C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.html133144930841611445 0
+88C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.b5b6448b.js.map133150032277311707 0
+89C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.f7626f62.css.map133150000005551800 0
+77C:\Users\ignac\OneDrive\Escritorio\Code\Otros\mapAppFrontNode\dist\index.html133150000005968712 0

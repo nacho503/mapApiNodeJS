@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/sass/main.scss" />
-    <script src="./src/js/loginHandler.js"></script>
+    <script type="module" src="./src/js/controller.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -13,7 +13,7 @@
     <div class="logIn-container">
       <input type="text" id="emailInput" />
       <input type="text" id="passwordInput" />
-      <button onclick="loginHandler()">Submit</button>
+      <button id="loginSubmit">Submit</button>
     </div>
   </body>
 </html>

@@ -532,28 +532,85 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"aenu9":[function(require,module,exports) {
-const userContainer = document.querySelector(".logIn-container");
-// const login = async function () {
-//   const userData = { email: "user1@gmail.com", password: "user1" };
-//   try {
-//     const res = await fetch("http://localhost:8080/login", {
-//       method: "POST",
-//       headers: { "content-type": "application/json" },
-//       body: JSON.stringify(userData),
-//     });
-//     const data = await res.json();
-//     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-//     console.log(res, data);
-//     const markup = `<span>${data.user}</span>`;
-//     userContainer.insertAdjacentHTML("afterbegin", markup);
-//   } catch (err) {
-//     alert(err);
-//   }
-// };
-function loginHandler() {
-    var emailInput = document.getElementById("emailInput").value;
-    console.log(`${emailInput}`);
-} // login();
+var _models = require("./models");
+const controlLogin = async function() {
+    const userContainer = document.querySelector(".logIn-container");
+    const logInSubmit = document.getElementById("loginSubmit");
+    function logInSub() {
+        const emailInput = document.getElementById("emailInput").value;
+        const passwordInput = document.getElementById("passwordInput").value;
+        console.log(emailInput, passwordInput);
+        (0, _models.getUser)(emailInput, passwordInput);
+    }
+    try {
+        logInSubmit.addEventListener("click", logInSub);
+    } catch (err) {}
+};
+controlLogin();
+
+},{"./models":"edpJG"}],"edpJG":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "loggedUserData", ()=>loggedUserData);
+parcelHelpers.export(exports, "getUser", ()=>getUser);
+const loggedUserData = {
+    id: "",
+    email: "",
+    token: ""
+};
+const getUser = async function(email, password) {
+    const userData = {
+        email: email,
+        password: password
+    }; //mail: user1@gmail.com pass: user1
+    try {
+        const res = await fetch("http://localhost:8080/login", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(userData)
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+        console.log(res, data);
+        localStorage.setItem("usuario", JSON.stringify(data));
+        const markup = `<span>${data.user}</span>`;
+        userContainer.insertAdjacentHTML("afterbegin", markup);
+    } catch (err) {
+        alert(`Login error: ${err}`);
+    }
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
 },{}]},["fA0o9","aenu9"], "aenu9", "parcelRequiree09d")
 

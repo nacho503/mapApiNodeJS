@@ -1,4 +1,5 @@
 import { getUser } from "./models";
+import loggedUserView from "./Views/loggedUserView";
 
 const controlLogin = async function () {
   const userContainer = document.querySelector(".logIn-container");
@@ -12,6 +13,7 @@ const controlLogin = async function () {
   }
   try {
     logInSubmit.addEventListener("click", logInSub);
+    userContainer.insertAdjacentHTML("afterbegin", loggedUserView.loggedUser());
   } catch (err) {}
 };
 

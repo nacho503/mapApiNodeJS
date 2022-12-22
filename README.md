@@ -1,4 +1,4 @@
-# Front de mapApi usando node js, MVC
+# Front de mapApp
 
 ## Instalaciones y configs
 

@@ -532,7 +532,10 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"aenu9":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _models = require("./models");
+var _loggedUserView = require("./Views/loggedUserView");
+var _loggedUserViewDefault = parcelHelpers.interopDefault(_loggedUserView);
 const controlLogin = async function() {
     const userContainer = document.querySelector(".logIn-container");
     const logInSubmit = document.getElementById("loginSubmit");
@@ -544,11 +547,12 @@ const controlLogin = async function() {
     }
     try {
         logInSubmit.addEventListener("click", logInSub);
+        userContainer.insertAdjacentHTML("afterbegin", (0, _loggedUserViewDefault.default).loggedUser());
     } catch (err) {}
 };
 controlLogin();
 
-},{"./models":"edpJG"}],"edpJG":[function(require,module,exports) {
+},{"./models":"edpJG","./Views/loggedUserView":"2dJQF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"edpJG":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "loggedUserData", ()=>loggedUserData);
@@ -612,6 +616,17 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["fA0o9","aenu9"], "aenu9", "parcelRequiree09d")
+},{}],"2dJQF":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class LoggedUserView {
+    _parentElement = document.querySelector(".logIn-container");
+    loggedUser() {
+        return `<span>Usuario logeado</span>`;
+    }
+}
+exports.default = new LoggedUserView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fA0o9","aenu9"], "aenu9", "parcelRequiree09d")
 
 //# sourceMappingURL=index.e37f48ea.js.map

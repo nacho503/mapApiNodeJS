@@ -547,7 +547,7 @@ const controlLogin = async function() {
     }
     try {
         logInSubmit.addEventListener("click", logInSub);
-        userContainer.insertAdjacentHTML("afterbegin", (0, _loggedUserViewDefault.default).loggedUser());
+    // userContainer.insertAdjacentHTML("afterbegin", loggedUserView.loggedUser());
     } catch (err) {}
 };
 controlLogin();
@@ -621,8 +621,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class LoggedUserView {
     _parentElement = document.querySelector(".logIn-container");
-    loggedUser() {
-        return `<span>Usuario logeado</span>`;
+    loggedUser(name) {
+        return `<span>${name}</span>`;
     }
 }
 exports.default = new LoggedUserView();

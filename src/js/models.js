@@ -16,8 +16,8 @@ export const getUser = async function (email, password) {
     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
     console.log(res, data);
     localStorage.setItem("usuario", JSON.stringify(data));
-    const markup = `<span>${data.user}</span>`;
-    userContainer.insertAdjacentHTML("afterbegin", markup);
+    // const markup = `<span>${data.user}</span>`;
+    // userContainer.insertAdjacentHTML("afterbegin", markup);
   } catch (err) {
     alert(`Login error: ${err}`);
   }

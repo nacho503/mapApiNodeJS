@@ -16,4 +16,17 @@ const controlLogin = async function () {
   } catch (err) {}
 };
 
+// let map;
+// function getLatLon() {
+//   // var latitude = position.coords.latitude;
+//   // var longitude = position.coords.longitude;
+//   map = new google.maps.Map(document.getElementById("map"), {
+//     center: { lat: -34.397, lng: 150.644 },
+//     zoom: 8,
+//   });
+// }
+
+//Ejecucion de funciones
+
 controlLogin();
+// getLatLon();

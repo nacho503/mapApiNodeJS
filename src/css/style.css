@@ -1,0 +1,22 @@
+/* 
+ * Optional: Makes the sample page fill the window. 
+ */
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+/* 
+ * map height define el tamaño div que contiene el mapa
+ */
+#map {
+  height: 100%;
+}
+
+.logIn-container {
+  background-color: gray;
+}

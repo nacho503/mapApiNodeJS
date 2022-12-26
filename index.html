@@ -4,16 +4,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/sass/main.scss" />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <!-- AIzaSyAyAt4DFlNqNtUT1m9WKv5nGqVD7e4dbUw -->
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyAt4DFlNqNtUT1m9WKv5nGqVD7e4dbUw"
+    ></script>
     <script type="module" src="./src/js/controller.js"></script>
     <title>Document</title>
+    <script type="text/javascript">
+      function initiateMap() {
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 8,
+          center: new google.maps.LatLng(-34.397, 150.644),
+        });
+      }
+    </script>
   </head>
-  <body>
+  <body onload="initiateMap()">
     <h1>TEST</h1>
     <div class="logIn-container">
       <input type="text" id="emailInput" />
       <input type="text" id="passwordInput" />
       <button id="loginSubmit">Submit</button>
     </div>
+    <div id="map"></div>
   </body>
 </html>

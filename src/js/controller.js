@@ -16,17 +16,22 @@ const controlLogin = async function () {
   } catch (err) {}
 };
 
-// let map;
-// function getLatLon() {
-//   // var latitude = position.coords.latitude;
-//   // var longitude = position.coords.longitude;
-//   map = new google.maps.Map(document.getElementById("map"), {
-//     center: { lat: -34.397, lng: 150.644 },
-//     zoom: 8,
-//   });
-// }
+const initiateMap = function () {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+      var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 9,
+      });
+      map.setCenter(pos);
+    });
+  }
 
-//Ejecucion de funciones
+  //Inicia el mapa y lo carga en el div 'map'
+};
 
 controlLogin();
-// getLatLon();
+initiateMap();

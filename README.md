@@ -1,4 +1,4 @@
-# Front de mapApp usando "Model View Controler"
+# Front de mapApp usando "Model View Controler" con Vanila JS
 
 ## Instalaciones y configs
 
@@ -8,12 +8,15 @@
 
 ## Configs
 
-- Uso de API google maps con
+- Uso de API google maps. Se carga con una key
+- Documentacion en 🔗https://developers.google.com/maps/documentation/javascript
+- Obtencion de coordenadas del usuario 🔗https://developers.google.com/maps/documentation/javascript/geolocation#maps_map_geolocation-javascript
 
 ## Comentarios
 
+- Todo lo relacionado a parcel para el sass no esta funcionando o aplicandose
 - No cargaba el mapa, teniendo los formatos de css en el main.scss, se creo style.css y cargo
 
 ## Pendientes
 
-- Mover la logica de carga de mapa siguiendo patron MVC
+- Marcadores en el mapa

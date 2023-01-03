@@ -9,14 +9,73 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 /* 
  * map height define el tamaño div que contiene el mapa
  */
 #map {
   height: 100%;
+  position: relative;
 }
 
-.logIn-container {
+.navbar-container {
   background-color: gray;
+}
+
+/* prueba de mdoal con overlay */
+.overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal {
+  display: none;
+  width: 300px;
+  height: 200px;
+  line-height: 200px;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -150px;
+  background-color: #8ebf42;
+  border-radius: 40px;
+  text-align: center;
+  z-index: 11;
+}
+
+.close {
+  display: none;
+  position: absolute;
+  right: 70px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.7;
+  z-index: 10;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
 }

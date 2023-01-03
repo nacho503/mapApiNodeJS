@@ -27,11 +27,63 @@ const initiateMap = function () {
         zoom: 9,
       });
       map.setCenter(pos);
+      const marker = new google.maps.Marker({
+        position: pos,
+        map: map,
+      });
+    });
+  }
+};
+
+const openOverlayModal = function () {
+  const newTaskBut = document.getElementById("newTask");
+  const closeBtn = document.getElementById("close");
+  const overlay = document.getElementById("overlay");
+  const modal = document.getElementById("modal");
+  function openModal() {
+    overlay.style.display = "block";
+    modal.style.display = "block";
+    closeBtn.style.display = "block";
+  }
+  newTaskBut.addEventListener("click", openModal);
+};
+
+const closeOverlay = function () {
+  const closeBtn = document.getElementById("close");
+  const overlay = document.getElementById("overlay");
+  const modal = document.getElementById("modal");
+  function closeModal() {
+    overlay.style.display = "none";
+    modal.style.display = "none";
+    closeBtn.style.display = "none";
+  }
+  closeBtn.addEventListener("click", closeModal);
+};
+
+const submitTask = function () {
+  //esta es para el formulario, no esta nada hecho
+  const taskSubmitButton = document.getElementById("taskSubmit");
+
+  let pos = { lat: "", lng: "" };
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
     });
   }
 
-  //Inicia el mapa y lo carga en el div 'map'
+  const submitTest = function () {
+    console.log(pos);
+  };
+
+  taskSubmitButton.addEventListener("click", submitTest);
 };
 
 controlLogin();
 initiateMap();
+openOverlayModal();
+// submitTask();
+closeOverlay();

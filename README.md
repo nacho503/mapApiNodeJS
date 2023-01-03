@@ -19,4 +19,8 @@
 
 ## Pendientes
 
-- Marcadores en el mapa
+- Que no cargue el mapa si no hay permiso de compartir ubicacion
+
+## Ayudas
+
+- Overlay de:

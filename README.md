@@ -4,7 +4,7 @@
 
 - npm install
 - npm i parcel -D (ultima version de parsel)
-- npm i sass
+- npm i sass (no se esta usando aun)
 
 ## Configs
 
@@ -19,7 +19,8 @@
 
 ## Pendientes
 
-- Que no cargue el mapa si no hay permiso de compartir ubicacion
+- Que no cargue el mapa si no hay permiso de compartir ubicacion.
+- Ver porque el mapa no carga en la primera carga de la web.
 
 ## Ayudas
 

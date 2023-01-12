@@ -35,6 +35,7 @@ const initiateMap = function () {
   }
 };
 
+//Esto al views
 const openOverlayModal = function () {
   const newTaskBut = document.getElementById("newTask");
   const closeBtn = document.getElementById("close");
@@ -47,7 +48,7 @@ const openOverlayModal = function () {
   }
   newTaskBut.addEventListener("click", openModal);
 };
-
+//Esto al views
 const closeOverlay = function () {
   const closeBtn = document.getElementById("close");
   const overlay = document.getElementById("overlay");

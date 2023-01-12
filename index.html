@@ -22,7 +22,35 @@
     </div>
     <!-- Prueba de modal con overlay -->
     <div class="overlay" id="overlay"></div>
-    <div class="modal" id="modal">TEST overlay</div>
+    <div class="modal" id="modal">
+      <form class="overlay-form">
+        <!--  -->
+        <label for="fname">Título</label>
+        <input
+          type="text"
+          id="titulo"
+          name="titulo"
+          placeholder="Nombre actividad"
+        />
+        <!--  -->
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" name="fecha" placeholder="Fecha" />
+        <!--  -->
+        <label for="monto">Monto</label>
+        <input type="number" id="monto" name="monto" placeholder="Monto" />
+        <!--  -->
+        <label for="monto">Monto</label>
+        <input type="number" id="monto" name="monto" placeholder="Monto" />
+        <!--  -->
+        <label for="direccion">Dirección</label>
+        <input type="number" id="monto" name="monto" placeholder="Monto" />
+        <!--  -->
+        <label for="descripcion">Descripción</label>
+        <textarea name="descripcion" id="" cols="30" rows="10"></textarea>
+        <button id="overlay-aceptar">Aceptar</button>
+        <button id="overlay-cancelar" class="overlay-cancelar">Cancelar</button>
+      </form>
+    </div>
     <a href="#" id="close" class="close"></a>
     <div id="map"></div>
   </body>

@@ -45,10 +45,25 @@ body {
   left: 50%;
   margin-top: -100px;
   margin-left: -150px;
-  background-color: #8ebf42;
-  border-radius: 40px;
+  background-color: #5b900b;
+  border-radius: 5px;
   text-align: center;
   z-index: 11;
+}
+
+.overlay-form {
+  position: relative;
+}
+/* Botones del overlay */
+.overlay-cancelar {
+  position: absolute;
+  top: 12%;
+  left: 25%;
+}
+#overlay-aceptar {
+  position: absolute;
+  top: 12%;
+  left: 50%;
 }
 
 .close {

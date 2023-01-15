@@ -22,33 +22,63 @@
     </div>
     <!-- Prueba de modal con overlay -->
     <div class="overlay" id="overlay"></div>
-    <div class="modal" id="modal">
+    <div class="modal-container" id="modal">
+      <h2>Nuevo Evento</h2>
       <form class="overlay-form">
         <!--  -->
-        <label for="fname">Título</label>
-        <input
-          type="text"
-          id="titulo"
-          name="titulo"
-          placeholder="Nombre actividad"
-        />
-        <!--  -->
-        <label for="fecha">Fecha</label>
-        <input type="date" id="fecha" name="fecha" placeholder="Fecha" />
-        <!--  -->
-        <label for="monto">Monto</label>
-        <input type="number" id="monto" name="monto" placeholder="Monto" />
-        <!--  -->
-        <label for="monto">Monto</label>
-        <input type="number" id="monto" name="monto" placeholder="Monto" />
-        <!--  -->
-        <label for="direccion">Dirección</label>
-        <input type="number" id="monto" name="monto" placeholder="Monto" />
-        <!--  -->
-        <label for="descripcion">Descripción</label>
-        <textarea name="descripcion" id="" cols="30" rows="10"></textarea>
-        <button id="overlay-aceptar">Aceptar</button>
+        <ul class="overlay-form-inputs">
+          <li>
+            <label for="titulo"
+              >Título
+              <input
+                type="text"
+                id="titulo"
+                name="titulo"
+                placeholder="Nombre actividad"
+              />
+            </label>
+          </li>
+          <!--  -->
+          <li>
+            <label for="fecha"
+              >Fecha
+              <input type="date" id="fecha" name="fecha" placeholder="Fecha" />
+            </label>
+          </li>
+          <!--  -->
+          <li>
+            <label for="monto"
+              >Monto
+              <input
+                type="number"
+                id="monto"
+                name="monto"
+                placeholder="Monto"
+              />
+            </label>
+          </li>
+          <!--  -->
+          <li>
+            <label for="direccion"
+              >Dirección
+              <input
+                type="text"
+                id="monto"
+                name="direccion"
+                placeholder="Dirección"
+              />
+            </label>
+          </li>
+          <!--  -->
+          <li>
+            <label for="descripcion"
+              >Descripción
+              <textarea name="descripcion" id="" cols="30" rows="10"></textarea>
+            </label>
+          </li>
+        </ul>
         <button id="overlay-cancelar" class="overlay-cancelar">Cancelar</button>
+        <button id="overlay-aceptar">Aceptar</button>
       </form>
     </div>
     <a href="#" id="close" class="close"></a>

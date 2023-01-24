@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/css/style.css" />
     <!-- AIzaSyAyAt4DFlNqNtUT1m9WKv5nGqVD7e4dbUw -->
+    <script defer type="module" src="./src/js/controller.js"></script>
     <script
-      async
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyAt4DFlNqNtUT1m9WKv5nGqVD7e4dbUw"
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyAt4DFlNqNtUT1m9WKv5nGqVD7e4dbUw&callback=Function.prototype"
     ></script>
-    <script type="module" src="./src/js/controller.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -63,7 +63,7 @@
               >Dirección
               <input
                 type="text"
-                id="monto"
+                id="direccion"
                 name="direccion"
                 placeholder="Dirección"
               />
@@ -73,12 +73,20 @@
           <li>
             <label for="descripcion"
               >Descripción
-              <textarea name="descripcion" id="" cols="30" rows="10"></textarea>
+              <textarea
+                name="descripcion"
+                id="descripcion"
+                cols="30"
+                rows="10"
+              ></textarea>
             </label>
           </li>
         </ul>
-        <button id="overlay-cancelar" class="overlay-cancelar">Cancelar</button>
-        <button id="overlay-aceptar">Aceptar</button>
+        <!-- Buttons -->
+        <button id="overlay-cancelar" class="overlay-cancelar" type="button">
+          Cancelar
+        </button>
+        <button id="overlay-aceptar" type="button">Aceptar</button>
       </form>
     </div>
     <a href="#" id="close" class="close"></a>

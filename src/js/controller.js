@@ -1,5 +1,6 @@
 import { getUser } from "./models.js";
 import loggedUserView from "./Views/loggedUserView.js";
+import newTaskForm from "./Views/newTaskForm.js";
 
 const controlLogin = async function () {
   const logInSubmit = document.getElementById("loginSubmit");
@@ -16,13 +17,14 @@ const controlLogin = async function () {
   } catch (err) {}
 };
 
-const initiateMap = function () {
+const initiateMap = async function () {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       const pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       };
+      localStorage.setItem("coords", JSON.stringify(pos));
       var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 9,
       });
@@ -35,56 +37,45 @@ const initiateMap = function () {
   }
 };
 
-//Esto al views
-const openOverlayModal = function () {
+const overlayHandler = function () {
   const newTaskBut = document.getElementById("newTask");
   const closeBtn = document.getElementById("close");
-  const overlay = document.getElementById("overlay");
-  const modal = document.getElementById("modal");
-  function openModal() {
-    overlay.style.display = "block";
-    modal.style.display = "block";
-    closeBtn.style.display = "block";
+  function open() {
+    newTaskForm.openModal();
   }
-  newTaskBut.addEventListener("click", openModal);
-};
-//Esto al views
-const closeOverlay = function () {
-  const closeBtn = document.getElementById("close");
-  const overlay = document.getElementById("overlay");
-  const modal = document.getElementById("modal");
   function closeModal() {
-    overlay.style.display = "none";
-    modal.style.display = "none";
-    closeBtn.style.display = "none";
+    newTaskForm.closeModal();
   }
+  newTaskBut.addEventListener("click", open);
   closeBtn.addEventListener("click", closeModal);
 };
 
 const submitTask = function () {
+  const submitBut = document.getElementById("overlay-aceptar");
+  //titulo,fecha,monto,direccion y descripcion
   //esta es para el formulario, no esta nada hecho
-  const taskSubmitButton = document.getElementById("taskSubmit");
 
   let pos = { lat: "", lng: "" };
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
-    });
-  }
-
   const submitTest = function () {
-    console.log(pos);
+    const eventTitle = document.getElementById("titulo").value;
+    const eventDate = document.getElementById("fecha").value;
+    const eventPrice = document.getElementById("monto").value;
+    const eventAddress = document.getElementById("direccion").value;
+    const eventDescription = document.getElementById("descripcion").value;
+    console.log(
+      eventDescription,
+      eventAddress,
+      eventPrice,
+      eventDate,
+      eventTitle
+    );
   };
 
-  taskSubmitButton.addEventListener("click", submitTest);
+  submitBut.addEventListener("click", submitTest);
 };
 
 controlLogin();
 initiateMap();
-openOverlayModal();
-// submitTask();
-closeOverlay();
+overlayHandler();
+submitTask();

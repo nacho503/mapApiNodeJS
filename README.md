@@ -1,27 +1,21 @@
-# Front de mapApp usando "Model View Controler" con Vanila JS
+# Front-End of "mapApp" using "Model View Controler" with Vanila JS
 
-## Instalaciones y configs
+## Instalations and configurations:
 
 - npm install
 - npm i parcel -D (ultima version de parsel)
 - npm i sass (no se esta usando aun)
 
-## Configs
+## Other configurations
 
-- Uso de API google maps. Se carga con una key
-- Documentacion en 🔗https://developers.google.com/maps/documentation/javascript
-- Obtencion de coordenadas del usuario 🔗https://developers.google.com/maps/documentation/javascript/geolocation#maps_map_geolocation-javascript
+- API google maps. Used with key
+- Documentation: 🔗https://developers.google.com/maps/documentation/javascript
+- Coordenates 🔗https://developers.google.com/maps/documentation/javascript/geolocation#maps_map_geolocation-javascript
 
-## Comentarios
+## Comments
 
-- Todo lo relacionado a parcel para el sass no esta funcionando o aplicandose
-- No cargaba el mapa, teniendo los formatos de css en el main.scss, se creo style.css y cargo
+- parcel & sass not working yet due that it was not loading the map from Google. Once changed to regular css (style.css) the map loaded.
 
-## Pendientes
+## Pendings
 
-- Que no cargue el mapa si no hay permiso de compartir ubicacion.
-- Ver porque el mapa no carga en la primera carga de la web.
-
-## Ayudas
-
-- Overlay de:
+- App not loading the map at first. It needs to be reloaded. (this needs to be solved)

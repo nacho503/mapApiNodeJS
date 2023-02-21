@@ -14,11 +14,30 @@ export const getUser = async function (email, password) {
     });
     const data = await res.json();
     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-    console.log(res, data);
-    localStorage.setItem("usuario", JSON.stringify(data));
-    // const markup = `<span>${data.user}</span>`;
-    // userContainer.insertAdjacentHTML("afterbegin", markup);
+
+    localStorage.setItem("user", JSON.stringify(data));
   } catch (err) {
     alert(`Login error: ${err}`);
   }
+};
+
+export const postEvent = async function (
+  user,
+  eventDescription,
+  eventAddress,
+  eventPrice,
+  eventDate,
+  eventTitle,
+  pos
+) {
+  const postEventData = {
+    user: user,
+    eventDescription: eventDescription,
+    eventAddress: eventAddress,
+    eventPrice: eventPrice,
+    eventDate: eventDate,
+    eventTitle: eventTitle,
+    pos: pos,
+  };
+  console.log(postEventData);
 };

@@ -1,4 +1,4 @@
-import { getUser } from "./models.js";
+import { getUser, postEvent } from "./models.js";
 import loggedUserView from "./Views/loggedUserView.js";
 import newTaskForm from "./Views/newTaskForm.js";
 
@@ -8,9 +8,11 @@ const controlLogin = async function () {
   function logInSub() {
     const emailInput = document.getElementById("emailInput").value;
     const passwordInput = document.getElementById("passwordInput").value;
-    console.log(emailInput, passwordInput);
-    getUser(emailInput, passwordInput);
-    loggedUserView.insertUserName();
+    getUser(emailInput, passwordInput); //post for getting token with user data
+    setTimeout(() => {
+      // puts the user next to login
+      loggedUserView.insertUserName();
+    }, 1000);
   }
   try {
     logInSubmit.addEventListener("click", logInSub); //ver si se debe usar await
@@ -52,27 +54,30 @@ const overlayHandler = function () {
 
 const submitTask = function () {
   const submitBut = document.getElementById("overlay-aceptar");
-  //titulo,fecha,monto,direccion y descripcion
-  //esta es para el formulario, no esta nada hecho
 
-  let pos = { lat: "", lng: "" };
+  let pos = localStorage.getItem("coords"); //object containing lat and long
+  let userName = localStorage.getItem("user"); //object containing lat and long
 
-  const submitTest = function () {
+  const submitTask_ = function () {
+    const user = JSON.parse(userName)["user"];
     const eventTitle = document.getElementById("titulo").value;
     const eventDate = document.getElementById("fecha").value;
     const eventPrice = document.getElementById("monto").value;
     const eventAddress = document.getElementById("direccion").value;
     const eventDescription = document.getElementById("descripcion").value;
-    console.log(
-      eventDescription,
-      eventAddress,
-      eventPrice,
+    const posJSON = JSON.parse(pos);
+    postEvent(
+      user,
+      eventTitle,
       eventDate,
-      eventTitle
+      eventPrice,
+      eventAddress,
+      eventDescription,
+      posJSON
     );
   };
 
-  submitBut.addEventListener("click", submitTest);
+  submitBut.addEventListener("click", submitTask_);
 };
 
 controlLogin();

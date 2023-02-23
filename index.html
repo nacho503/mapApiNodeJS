@@ -14,22 +14,22 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="navbar-container">
+    <nav class="navbar-container">
       <input type="text" id="emailInput" />
       <input type="text" id="passwordInput" />
       <button id="loginSubmit">Log in</button>
       <button id="newTask">New Task</button>
-    </div>
-    <!-- Prueba de modal con overlay -->
+    </nav>
+    <!-- Modal -->
     <div class="overlay" id="overlay"></div>
     <div class="modal-container" id="modal">
-      <h2>Nuevo Evento</h2>
+      <h2>New event</h2>
       <form class="overlay-form">
         <!--  -->
         <ul class="overlay-form-inputs">
           <li>
             <label for="titulo"
-              >Título
+              >Tittle
               <input
                 type="text"
                 id="titulo"
@@ -41,14 +41,14 @@
           <!--  -->
           <li>
             <label for="fecha"
-              >Fecha
+              >Date
               <input type="date" id="fecha" name="fecha" placeholder="Fecha" />
             </label>
           </li>
           <!--  -->
           <li>
             <label for="monto"
-              >Monto
+              >Mount
               <input
                 type="number"
                 id="monto"
@@ -60,7 +60,7 @@
           <!--  -->
           <li>
             <label for="direccion"
-              >Dirección
+              >Address
               <input
                 type="text"
                 id="direccion"
@@ -72,7 +72,7 @@
           <!--  -->
           <li>
             <label for="descripcion"
-              >Descripción
+              >Description
               <textarea
                 name="descripcion"
                 id="descripcion"
@@ -84,7 +84,7 @@
         </ul>
         <!-- Buttons -->
         <button id="overlay-cancelar" class="overlay-cancelar" type="button">
-          Cancelar
+          Cancel
         </button>
         <button id="overlay-aceptar" type="button">Aceptar</button>
       </form>

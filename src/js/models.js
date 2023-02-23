@@ -15,29 +15,45 @@ export const getUser = async function (email, password) {
     const data = await res.json();
     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
 
-    localStorage.setItem("user", JSON.stringify(data));
+    sessionStorage.setItem("user", JSON.stringify(data));
   } catch (err) {
     alert(`Login error: ${err}`);
   }
 };
 
 export const postEvent = async function (
-  user,
-  eventDescription,
-  eventAddress,
-  eventPrice,
-  eventDate,
   eventTitle,
-  pos
+  pos_lat,
+  pos_lng,
+  eventDate,
+  eventDescription,
+  eventPrice,
+  eventAddress
 ) {
   const postEventData = {
-    user: user,
-    eventDescription: eventDescription,
-    eventAddress: eventAddress,
-    eventPrice: eventPrice,
-    eventDate: eventDate,
-    eventTitle: eventTitle,
-    pos: pos,
+    title: eventTitle,
+    lat: +pos_lat,
+    long: +pos_lng,
+    date: eventDate,
+    descrip: eventDescription,
+    amount: +eventPrice,
+    address: eventAddress,
   };
   console.log(postEventData);
+  try {
+    const token = JSON.parse(sessionStorage.getItem("user"))["token"]; //JSON.stringify() this previuosly encompased the previious
+    const res = await fetch("http://localhost:8080/create_mark", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(postEventData),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+    console.log(token);
+  } catch (err) {
+    alert(`Operation failed: ${err}`);
+  }
 };

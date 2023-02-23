@@ -5,7 +5,7 @@ class LoggedUserView {
   _loginButt = document.getElementById("loginSubmit");
 
   loggedUser() {
-    let loggedUser = JSON.parse(localStorage.getItem("user"));
+    let loggedUser = JSON.parse(sessionStorage.getItem("user"));
     this._loginSub.style.display = "none";
     this._passwSub.style.display = "none";
     this._loginButt.style.display = "none";
@@ -13,7 +13,7 @@ class LoggedUserView {
   }
   //
   insertUserName() {
-    if (localStorage.getItem("user")) {
+    if (sessionStorage.getItem("user")) {
       this._parentElement.insertAdjacentHTML("afterbegin", this.loggedUser());
     } else {
       ("");

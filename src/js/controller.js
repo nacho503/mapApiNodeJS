@@ -26,7 +26,7 @@ const initiateMap = async function () {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       };
-      localStorage.setItem("coords", JSON.stringify(pos));
+      sessionStorage.setItem("coords", JSON.stringify(pos));
       var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 9,
       });
@@ -42,6 +42,7 @@ const initiateMap = async function () {
 const overlayHandler = function () {
   const newTaskBut = document.getElementById("newTask");
   const closeBtn = document.getElementById("close");
+  const overlay_cancel = document.getElementById("overlay-cancelar");
   function open() {
     newTaskForm.openModal();
   }
@@ -50,31 +51,37 @@ const overlayHandler = function () {
   }
   newTaskBut.addEventListener("click", open);
   closeBtn.addEventListener("click", closeModal);
+  overlay_cancel.addEventListener("click", closeModal);
 };
 
 const submitTask = function () {
   const submitBut = document.getElementById("overlay-aceptar");
 
-  let pos = localStorage.getItem("coords"); //object containing lat and long
-  let userName = localStorage.getItem("user"); //object containing lat and long
+  // let user = sessionStorage.getItem("user"); //Aparently we don't need ID, since back-end automatically associates it
 
   const submitTask_ = function () {
-    const user = JSON.parse(userName)["user"];
+    let pos = sessionStorage.getItem("coords"); //object containing lat and long
+    let posJSON = JSON.parse(pos);
+    // const userId = JSON.parse(user)["id"];
     const eventTitle = document.getElementById("titulo").value;
     const eventDate = document.getElementById("fecha").value;
     const eventPrice = document.getElementById("monto").value;
     const eventAddress = document.getElementById("direccion").value;
     const eventDescription = document.getElementById("descripcion").value;
-    const posJSON = JSON.parse(pos);
+    const pos_lat = posJSON["lat"];
+    const pos_lng = posJSON["lng"];
     postEvent(
-      user,
+      //funciton from models.js
+      // userId,
       eventTitle,
+      pos_lat,
+      pos_lng,
       eventDate,
-      eventPrice,
-      eventAddress,
       eventDescription,
-      posJSON
+      eventPrice,
+      eventAddress
     );
+    newTaskForm.closeModal();
   };
 
   submitBut.addEventListener("click", submitTask_);

@@ -57,3 +57,11 @@ export const postEvent = async function (
     alert(`Operation failed: ${err}`);
   }
 };
+
+export const getMarks = async function () {
+  const response = await fetch("http://localhost:8080/get_marks_all");
+  const data = await response.json();
+  const marksOnMap = data;
+
+  return marksOnMap; // Export the marksOnMap array
+};

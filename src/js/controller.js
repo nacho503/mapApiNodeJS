@@ -1,4 +1,4 @@
-import { getUser, postEvent } from "./models.js";
+import { getUser, postEvent, getMarks } from "./models.js";
 import loggedUserView from "./Views/loggedUserView.js";
 import newTaskForm from "./Views/newTaskForm.js";
 
@@ -87,7 +87,13 @@ const submitTask = function () {
   submitBut.addEventListener("click", submitTask_);
 };
 
+const marksOnMap = async function () {
+  const marksOnMap = await getMarks();
+  console.log(marksOnMap);
+};
+
 controlLogin();
 initiateMap();
+marksOnMap();
 overlayHandler();
 submitTask();

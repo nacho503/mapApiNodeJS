@@ -2,6 +2,8 @@ import { getUser, postEvent, getMarks } from "./models.js";
 import loggedUserView from "./Views/loggedUserView.js";
 import newTaskForm from "./Views/newTaskForm.js";
 
+let map;
+
 const controlLogin = async function () {
   const logInSubmit = document.getElementById("loginSubmit");
 
@@ -19,6 +21,7 @@ const controlLogin = async function () {
   } catch (err) {}
 };
 
+//Test with other marks on map
 const initiateMap = async function () {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -27,7 +30,7 @@ const initiateMap = async function () {
         lng: position.coords.longitude,
       };
       sessionStorage.setItem("coords", JSON.stringify(pos));
-      var map = new google.maps.Map(document.getElementById("map"), {
+      map = new google.maps.Map(document.getElementById("map"), {
         zoom: 9,
       });
       map.setCenter(pos);
@@ -90,6 +93,13 @@ const submitTask = function () {
 const marksOnMap = async function () {
   const marksOnMap = await getMarks();
   console.log(marksOnMap);
+
+  marksOnMap.forEach((coord) => {
+    const marker = new google.maps.Marker({
+      position: { lat: coord.lat, lng: coord.long },
+      map: map,
+    });
+  });
 };
 
 controlLogin();

@@ -16,6 +16,8 @@
 
 - parcel & sass not working yet due that it was not loading the map from Google. Once changed to regular css (style.css) the map loaded.
 
+- working icons from: https://www.flaticon.es/ . Use the url of each.
+
 ## Pendings
 
 - App not loading the map at first. It needs to be reloaded. (this needs to be solved)

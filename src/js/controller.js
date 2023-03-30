@@ -1,8 +1,11 @@
 import { getUser, postEvent, getMarks } from "./models.js";
+import { nightMode } from "./helpers.js";
 import loggedUserView from "./Views/loggedUserView.js";
 import newTaskForm from "./Views/newTaskForm.js";
 
+//Helpers (consider moving them)
 let map;
+let dark = false;
 
 const controlLogin = async function () {
   const logInSubmit = document.getElementById("loginSubmit");
@@ -34,7 +37,7 @@ const initiateMap = async function () {
         zoom: 9,
       });
       map.setCenter(pos);
-      const marker = new google.maps.Marker({
+      const markerSelf = new google.maps.Marker({
         position: pos,
         map: map,
       });
@@ -98,12 +101,35 @@ const marksOnMap = async function () {
     const marker = new google.maps.Marker({
       position: { lat: coord.lat, lng: coord.long },
       map: map,
+      icon: {
+        url: "https://cdn-icons-png.flaticon.com/128/10204/10204362.png",
+        scaledSize: new google.maps.Size(40, 40),
+      },
     });
   });
 };
 
+const toggleDarkView = function () {
+  //Check the logic under MVC
+  const toggleBtn = document.getElementById("toggleBtn");
+  toggleBtn.addEventListener("click", () => {
+    if (!dark) {
+      toggleBtn.classList.add("dark-mode");
+      map.setOptions({ styles: nightMode });
+      dark = true;
+    } else {
+      toggleBtn.classList.remove("dark-mode");
+      console.log("Removing dark-mode class");
+      map.setOptions({ styles: [] });
+      dark = false;
+    }
+  });
+};
+
+// Controller set
 controlLogin();
 initiateMap();
 marksOnMap();
 overlayHandler();
 submitTask();
+toggleDarkView(); //Check the logic under MVC

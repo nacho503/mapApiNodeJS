@@ -2,6 +2,7 @@ import { getUser, postEvent, getMarks } from "./models.js";
 import { nightMode } from "./helpers.js";
 import loggedUserView from "./Views/loggedUserView.js";
 import newTaskForm from "./Views/newTaskForm.js";
+import markerInfoView from "./Views/markerInfoView.js";
 
 //Helpers (consider moving them)
 let map;
@@ -105,6 +106,19 @@ const marksOnMap = async function () {
         url: "https://cdn-icons-png.flaticon.com/128/10204/10204362.png",
         scaledSize: new google.maps.Size(40, 40),
       },
+      data: {
+        id: coord.id,
+        title: coord.title,
+      },
+    });
+
+    function open() {
+      markerInfoView.openModal();
+    }
+    //Add event listener for the marker:
+    marker.addListener("click", function () {
+      console.dir(marker.data.title);
+      // open();
     });
   });
 };

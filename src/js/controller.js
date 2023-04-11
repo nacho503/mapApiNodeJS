@@ -7,6 +7,7 @@ import markerInfoView from "./Views/markerInfoView.js";
 //Helpers (consider moving them)
 let map;
 let dark = false;
+let all_markers = [];
 
 const controlLogin = async function () {
   const logInSubmit = document.getElementById("loginSubmit");
@@ -23,6 +24,14 @@ const controlLogin = async function () {
   try {
     logInSubmit.addEventListener("click", logInSub); //ver si se debe usar await
   } catch (err) {}
+};
+
+const controlLogout = function () {
+  const logoutButt = document.getElementById("logout");
+  function logOut() {
+    loggedUserView.logoutUser();
+  }
+  logoutButt.addEventListener("click", logOut);
 };
 
 //Test with other marks on map
@@ -42,6 +51,7 @@ const initiateMap = async function () {
         position: pos,
         map: map,
       });
+      all_markers.push(markerSelf);
     });
   }
 };
@@ -70,11 +80,11 @@ const submitTask = function () {
     let pos = sessionStorage.getItem("coords"); //object containing lat and long
     let posJSON = JSON.parse(pos);
     // const userId = JSON.parse(user)["id"];
-    const eventTitle = document.getElementById("titulo").value;
-    const eventDate = document.getElementById("fecha").value;
-    const eventPrice = document.getElementById("monto").value;
-    const eventAddress = document.getElementById("direccion").value;
-    const eventDescription = document.getElementById("descripcion").value;
+    const eventTitle = document.getElementById("title").value;
+    const eventDate = document.getElementById("date").value;
+    const eventPrice = document.getElementById("amount").value;
+    const eventAddress = document.getElementById("address").value;
+    const eventDescription = document.getElementById("description").value;
     const pos_lat = posJSON["lat"];
     const pos_lng = posJSON["lng"];
     postEvent(
@@ -94,9 +104,19 @@ const submitTask = function () {
   submitBut.addEventListener("click", submitTask_);
 };
 
+// Loads marks on map and it has the handlers when clicking on them
 const marksOnMap = async function () {
+  const closeModal = document.getElementById("close");
   const marksOnMap = await getMarks();
-  console.log(marksOnMap);
+  //create a function to group markers with same or similar coords
+  // helper functions
+
+  function open() {
+    markerInfoView.openModal();
+  }
+  function close() {
+    markerInfoView.closeModal();
+  }
 
   marksOnMap.forEach((coord) => {
     const marker = new google.maps.Marker({
@@ -108,18 +128,53 @@ const marksOnMap = async function () {
       },
       data: {
         id: coord.id,
+        address: coord.address,
         title: coord.title,
+        amount: coord.amount,
+        date: coord.date,
+        descrip: coord.descrip,
+        lat: coord.lat,
+        long: coord.long,
+        user_name: coord.user_name,
       },
     });
+    all_markers.push(marker);
+    console.log(all_markers);
+    const title = document.getElementById("popup-title");
+    const date = document.getElementById("popup-date");
+    const amount = document.getElementById("popup-amount");
+    const address = document.getElementById("popup-address");
+    const desc = document.getElementById("popup-description");
+    const coords = document.getElementById("popup-coordinates");
+    const creator = document.getElementById("popup-creator");
 
-    function open() {
-      markerInfoView.openModal();
-    }
-    //Add event listener for the marker:
+    //Add event listener for the marker when clicked and sends the data to the html:
     marker.addListener("click", function () {
-      console.dir(marker.data.title);
-      // open();
+      title.innerHTML += ` ${marker.data.title}`;
+      date.innerHTML += ` ${marker.data.date}`;
+      amount.innerHTML += ` ${marker.data.amount}`;
+      address.innerHTML += ` ${marker.data.address}`;
+      desc.innerHTML += ` ${marker.data.descrip}`;
+      coords.innerHTML += ` Latitude: ${marker.data.lat}, Longitude: ${marker.data.long}`;
+      creator.innerHTML += ` ${marker.data.user_name}`;
+      open();
     });
+    //Close the modal of the marker info
+    closeModal.addEventListener("click", function () {
+      title.innerHTML = "Title:";
+      date.innerHTML = "Created:";
+      amount.innerHTML = "Amount:";
+      address.innerHTML = "Address:";
+      desc.innerHTML = "Description:";
+      coords.innerHTML = "Coordinates:";
+      creator.innerHTML = "Creator:";
+      close();
+    });
+  });
+
+  //Marker Cluster not working
+  const markerCluster = new MarkerClusterer(map, all_markers, {
+    imagePath: "https://cdn-icons-png.flaticon.com/512/4807/4807598.png",
   });
 };
 
@@ -142,6 +197,7 @@ const toggleDarkView = function () {
 
 // Controller set
 controlLogin();
+controlLogout();
 initiateMap();
 marksOnMap();
 overlayHandler();

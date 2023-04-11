@@ -21,16 +21,112 @@ body {
   position: relative;
 }
 
+/* Navbar and Elements */
 .navbar-container {
   position: sticky;
   top: 0px;
-  padding: 0.3vh;
+  padding: 0.9vh;
   width: 100%;
   z-index: 9;
-  background-color: gray;
+  background-color: #075e54; /* Dark green color similar to WhatsApp */
+  display: flex; /* Use flexbox to align items horizontally */
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Space out items evenly */
+}
+/* User name when logged */
+#userName {
+  display: none;
+  padding: 5px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 18px;
 }
 
-/* prueba de mdoal con overlay */
+.navbar-container input[type="text"],
+.navbar-container input[type="password"] {
+  padding: 5px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 3px;
+  background-color: #f2f2f2; /* Light gray color for input fields */
+  font-size: 14px;
+  color: #000;
+}
+
+#loginSubmit,
+#newTask,
+#register,
+#logout {
+  padding: 5px 10px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 3px;
+  background-color: #25d36593; /* Green color similar to WhatsApp */
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+#loggedIn-left,
+#logout {
+  display: none;
+}
+
+#login-register-container {
+  display: flex;
+}
+
+#toggleBtn {
+  background-color: #25d36593;
+}
+/*END Navbar and Elements END */
+/* Register Form */
+.register-form-container {
+  display: none;
+  background-color: #ffffff;
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.register-form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.register-form-container form h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+#registerPasswordInput,
+#registerUsernameInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  outline: none;
+}
+
+.register-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+#registrationSubmit,
+#registrationCancel {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* End Register Form */
+/* OVERLAY */
 .overlay {
   display: none;
   position: absolute;
@@ -167,3 +263,39 @@ nav #toggleBtn.dark-mode::before {
 nav #toggleBtn:hover {
   opacity: 0.8;
 }
+
+/* Popup for marker info */
+
+#popup-content {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+  z-index: 11;
+}
+
+#popup-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+#popup-date,
+#popup-amount,
+#popup-address,
+#popup-description,
+#popup-coordinates,
+#popup-creator {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* End of CSS for Popup */

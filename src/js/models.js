@@ -1,11 +1,5 @@
-export const loggedUserData = {
-  id: "",
-  email: "",
-  token: "",
-};
-
-export const getUser = async function (email, password) {
-  const userData = { email: email, password: password }; //mail: user1@gmail.com pass: user1
+export const getUser = async function (email, password, user_name) {
+  const userData = { email: email, password: password, user_name: user_name }; //mail: user1@gmail.com pass: user1
   try {
     const res = await fetch("http://localhost:8080/login", {
       method: "POST",
@@ -62,6 +56,7 @@ export const getMarks = async function () {
   const response = await fetch("http://localhost:8080/get_marks_all");
   const data = await response.json();
   const marksOnMap = data;
+  console.log(marksOnMap);
 
   return marksOnMap; // Export the marksOnMap array
 };

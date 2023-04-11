@@ -7,20 +7,36 @@
     <link rel="stylesheet" href="src/css/style.css" />
     <!-- AIzaSyAyAt4DFlNqNtUT1m9WKv5nGqVD7e4dbUw -->
     <script defer type="module" src="./src/js/controller.js"></script>
+    <!-- Dependencies -->
+    <!-- GoogleMaps API -->
     <script
       defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyAt4DFlNqNtUT1m9WKv5nGqVD7e4dbUw&callback=Function.prototype"
+    ></script>
+    <!-- Marker Clusterer for stacked up markers -->
+    <script
+      defer
+      src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"
     ></script>
 
     <title>Document</title>
   </head>
   <body>
     <nav class="navbar-container">
-      <input type="text" id="emailInput" />
-      <input type="text" id="passwordInput" />
-      <button id="loginSubmit">Log in</button>
-      <button id="newTask">New Task</button>
-      <button id="toggleBtn">🌜 🌞</button>
+      <div id="loggedIn-left">
+        <div id="userName"></div>
+        <button id="logout">Logout</button>
+      </div>
+      <div class="login-register-container">
+        <input type="text" id="emailInput" />
+        <input type="text" id="passwordInput" />
+        <button id="loginSubmit">Log in</button>
+        <button id="register">Register</button>
+      </div>
+      <div>
+        <button id="newTask">New Task</button>
+        <button id="toggleBtn">🌜 🌞</button>
+      </div>
     </nav>
     <!-- Modal -->
     <div class="overlay" id="overlay"></div>
@@ -30,54 +46,54 @@
         <!--  -->
         <ul class="overlay-form-inputs">
           <li>
-            <label for="titulo"
-              >Tittle
+            <label for="title"
+              >Title
               <input
                 type="text"
-                id="titulo"
-                name="titulo"
-                placeholder="Nombre actividad"
+                id="title"
+                name="title"
+                placeholder="Activity Name"
               />
             </label>
           </li>
           <!--  -->
           <li>
-            <label for="fecha"
+            <label for="date"
               >Date
-              <input type="date" id="fecha" name="fecha" placeholder="Fecha" />
+              <input type="date" id="date" name="date" placeholder="Date" />
             </label>
           </li>
           <!--  -->
           <li>
-            <label for="monto"
-              >Mount
+            <label for="amount"
+              >Amount
               <input
                 type="number"
-                id="monto"
-                name="monto"
-                placeholder="Monto"
+                id="amount"
+                name="amount"
+                placeholder="Amount"
               />
             </label>
           </li>
           <!--  -->
           <li>
-            <label for="direccion"
+            <label for="address"
               >Address
               <input
                 type="text"
-                id="direccion"
-                name="direccion"
-                placeholder="Dirección"
+                id="address"
+                name="address"
+                placeholder="Address"
               />
             </label>
           </li>
           <!--  -->
           <li>
-            <label for="descripcion"
+            <label for="description"
               >Description
               <textarea
-                name="descripcion"
-                id="descripcion"
+                name="description"
+                id="description"
                 cols="30"
                 rows="10"
               ></textarea>
@@ -88,10 +104,51 @@
         <button id="overlay-cancelar" class="overlay-cancelar" type="button">
           Cancel
         </button>
-        <button id="overlay-aceptar" type="button">Aceptar</button>
+        <button id="overlay-aceptar" type="button">Accept</button>
       </form>
     </div>
     <a href="#" id="close" class="close"></a>
+    <!-- pop up for marker Info -->
+    <div id="popup-content">
+      <div id="popup-title">Title:</div>
+      <div id="popup-date">Created:</div>
+      <div id="popup-amount">Amount:</div>
+      <div id="popup-address">Address:</div>
+      <div id="popup-description">Description:</div>
+      <div id="popup-coordinates">Coordinates:</div>
+      <div id="popup-creator">Creator:</div>
+    </div>
+    <a href="#" id="close" class="close"></a>
+    <!-- End of pop up for marker info -->
+    <!-- Register Form -->
+    <div class="register-form-container">
+      <form id="registrationForm">
+        <h1>Registration</h1>
+        <input
+          type="email"
+          id="registerEmailInput"
+          placeholder="Email"
+          required
+        />
+        <input
+          type="password"
+          id="registerPasswordInput"
+          placeholder="Password"
+          required
+        />
+        <input
+          type="text"
+          id="registerUsernameInput"
+          placeholder="Username"
+          required
+        />
+        <div class="register-button-container">
+          <button type="submit" id="registrationSubmit">Register</button>
+          <button type="button" id="registrationCancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <!-- End Register Form -->
     <div id="map"></div>
   </body>
 </html>

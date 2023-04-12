@@ -85,11 +85,19 @@ body {
 .register-form-container {
   display: none;
   background-color: #ffffff;
+  position: fixed;
   width: 300px;
+  top: 40%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -150px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  z-index: 11;
 }
+
 .register-form-container form {
   display: flex;
   flex-direction: column;
@@ -100,6 +108,7 @@ body {
   margin-bottom: 20px;
 }
 
+#registerEmailInput,
 #registerPasswordInput,
 #registerUsernameInput {
   width: 100%;
@@ -112,7 +121,8 @@ body {
 
 .register-button-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 #registrationSubmit,
@@ -123,6 +133,7 @@ body {
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
+  background-color: #25d36593;
 }
 
 /* End Register Form */
@@ -147,19 +158,15 @@ body {
   left: 50%;
   margin-top: -100px;
   margin-left: -150px;
-  background-color: #5b900b;
-  border-radius: 5px;
+  background-color: #075e54;
+  border-radius: 10px;
   text-align: center;
   z-index: 11;
-}
-.modal-container h2 {
-  margin-top: 0.5em;
 }
 
 .overlay-form {
   position: relative;
-  width: 80%;
-  margin-left: 10%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -168,34 +175,67 @@ body {
   line-height: 1.5em;
 }
 
+.overlay-form {
+  margin-bottom: 1rem;
+}
+.overlay-form h2 {
+  margin-bottom: 1rem;
+}
+
 .overlay-form-inputs {
   display: flex;
   flex-direction: column;
   list-style-type: none;
   text-align: left;
-  margin-bottom: 4em;
+  margin-bottom: 0.5rem;
 }
 
 .overlay-form-inputs label {
   line-height: 1/3em;
+  font-size: 18px;
+  margin-left: 1rem;
 }
 .overlay-form-inputs input {
   height: 20px;
   width: 60%;
   margin-right: 0.1em;
   float: right;
+  margin-right: 1rem;
+}
+
+.overlay-form-inputs textarea {
+  margin-left: 2rem;
 }
 
 /************************ Botones del overlay */
+#task-buttons-container {
+  display: flex;
+  gap: 1rem;
+}
+
 .overlay-cancelar {
-  position: absolute;
-  top: 80%;
-  left: 50%;
+  /* position: absolute; */
+  /* top: 80%;
+  left: 50%; */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #25d36593;
 }
 #overlay-aceptar {
-  position: absolute;
-  top: 80%;
-  left: 25%;
+  /* position: absolute; */
+  /* top: 80%;
+  left: 25%; */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #25d36593;
 }
 
 .titulo-container {

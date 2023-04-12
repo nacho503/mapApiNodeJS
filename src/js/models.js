@@ -15,6 +15,25 @@ export const getUser = async function (email, password, user_name) {
   }
 };
 
+export const createUser = async function (email, password, user_name) {
+  const newUserData = {
+    email: email,
+    password: password,
+    user_name: user_name,
+  }; //mail: user1@gmail.com pass: user1 // mail: user2@gmail.com pass: user2
+  try {
+    const res = await fetch("http://localhost:8080/create_user", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(newUserData),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+  } catch (err) {
+    alert(`Login error: ${err}`);
+  }
+};
+
 export const postEvent = async function (
   eventTitle,
   pos_lat,

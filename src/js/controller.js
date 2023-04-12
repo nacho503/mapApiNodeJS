@@ -1,8 +1,9 @@
-import { getUser, postEvent, getMarks } from "./models.js";
+import { getUser, postEvent, getMarks, createUser } from "./models.js";
 import { nightMode } from "./helpers.js";
 import loggedUserView from "./Views/loggedUserView.js";
 import newTaskForm from "./Views/newTaskForm.js";
 import markerInfoView from "./Views/markerInfoView.js";
+import registerView from "./Views/registerView.js";
 
 //Helpers (consider moving them)
 let map;
@@ -32,6 +33,33 @@ const controlLogout = function () {
     loggedUserView.logoutUser();
   }
   logoutButt.addEventListener("click", logOut);
+};
+
+const controlRegister = function () {
+  const emailIn = document.getElementById("registerEmailInput");
+  const passW = document.getElementById("registerPasswordInput");
+  const userN = document.getElementById("registerUsernameInput");
+  const regButt = document.getElementById("register");
+  const closeBtn = document.getElementById("close");
+  const cancelBut = document.getElementById("registrationCancel");
+  const subButt = document.getElementById("registrationSubmit");
+
+  function displayRegForm() {
+    registerView.showRegForm();
+  }
+  function closeRegForm() {
+    registerView.closeRegForm();
+  }
+
+  function registerbuttonHandler() {
+    console.log(emailIn.value, passW.value, userN.value);
+    createUser(emailIn.value, passW.value, userN.value);
+    registerView.closeRegForm();
+  }
+  subButt.addEventListener("click", registerbuttonHandler);
+  regButt.addEventListener("click", displayRegForm);
+  closeBtn.addEventListener("click", closeRegForm);
+  cancelBut.addEventListener("click", closeRegForm);
 };
 
 //Test with other marks on map
@@ -196,8 +224,10 @@ const toggleDarkView = function () {
 };
 
 // Controller set
+
 controlLogin();
 controlLogout();
+controlRegister();
 initiateMap();
 marksOnMap();
 overlayHandler();

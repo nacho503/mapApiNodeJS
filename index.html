@@ -29,7 +29,7 @@
       </div>
       <div class="login-register-container">
         <input type="text" id="emailInput" />
-        <input type="text" id="passwordInput" />
+        <input type="password" id="passwordInput" />
         <button id="loginSubmit">Log in</button>
         <button id="register">Register</button>
       </div>
@@ -41,8 +41,8 @@
     <!-- Modal -->
     <div class="overlay" id="overlay"></div>
     <div class="modal-container" id="modal">
-      <h2>New event</h2>
       <form class="overlay-form">
+        <h2>New Event</h2>
         <!--  -->
         <ul class="overlay-form-inputs">
           <li>
@@ -101,10 +101,12 @@
           </li>
         </ul>
         <!-- Buttons -->
-        <button id="overlay-cancelar" class="overlay-cancelar" type="button">
-          Cancel
-        </button>
-        <button id="overlay-aceptar" type="button">Accept</button>
+        <div id="task-buttons-container">
+          <button id="overlay-cancelar" class="overlay-cancelar" type="button">
+            Cancel
+          </button>
+          <button id="overlay-aceptar" type="button">Accept</button>
+        </div>
       </form>
     </div>
     <a href="#" id="close" class="close"></a>
@@ -139,11 +141,11 @@
         <input
           type="text"
           id="registerUsernameInput"
-          placeholder="Username"
+          placeholder="User"
           required
         />
         <div class="register-button-container">
-          <button type="submit" id="registrationSubmit">Register</button>
+          <button type="submit" id="registrationSubmit">Submit</button>
           <button type="button" id="registrationCancel">Cancel</button>
         </div>
       </form>

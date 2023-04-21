@@ -1,49 +1,39 @@
 import { getUser, postEvent, getMarks, createUser } from "./models.js";
-import { nightMode } from "./helpers.js";
+import { nightMode } from "./helpers/nightMode.js";
 import loggedUserView from "./Views/loggedUserView.js";
 import newTaskForm from "./Views/newTaskForm.js";
 import markerInfoView from "./Views/markerInfoView.js";
 import registerView from "./Views/registerView.js";
+import DomElements from "./helpers/domElements.js";
 
 //Helpers (consider moving them)
+let domElements = new DomElements();
 let map;
 let dark = false;
-let all_markers = [];
 
+//Login Function
 const controlLogin = async function () {
-  const logInSubmit = document.getElementById("loginSubmit");
-
   function logInSub() {
-    const emailInput = document.getElementById("emailInput").value;
-    const passwordInput = document.getElementById("passwordInput").value;
-    getUser(emailInput, passwordInput); //post for getting token with user data
+    getUser(domElements.emailInput.value, domElements.passwordInput.value); //post for getting token with user data
     setTimeout(() => {
-      // puts the user next to login
+      //This function puts the name of the logged user next to loggout button
       loggedUserView.insertUserName();
     }, 1000);
   }
   try {
-    logInSubmit.addEventListener("click", logInSub); //ver si se debe usar await
+    domElements.logInSubmit.addEventListener("click", logInSub);
   } catch (err) {}
 };
 
+//Logout fn, removes token from sessionStorage
 const controlLogout = function () {
-  const logoutButt = document.getElementById("logout");
   function logOut() {
     loggedUserView.logoutUser();
   }
-  logoutButt.addEventListener("click", logOut);
+  domElements.logoutButt.addEventListener("click", logOut);
 };
 
 const controlRegister = function () {
-  const emailIn = document.getElementById("registerEmailInput");
-  const passW = document.getElementById("registerPasswordInput");
-  const userN = document.getElementById("registerUsernameInput");
-  const regButt = document.getElementById("register");
-  const closeBtn = document.getElementById("close");
-  const cancelBut = document.getElementById("registrationCancel");
-  const subButt = document.getElementById("registrationSubmit");
-
   function displayRegForm() {
     registerView.showRegForm();
   }
@@ -52,17 +42,20 @@ const controlRegister = function () {
   }
 
   function registerbuttonHandler() {
-    console.log(emailIn.value, passW.value, userN.value);
-    createUser(emailIn.value, passW.value, userN.value);
+    createUser(
+      domElements.emailIn.value,
+      domElements.passW.value,
+      domElements.userN.value
+    );
     registerView.closeRegForm();
   }
-  subButt.addEventListener("click", registerbuttonHandler);
-  regButt.addEventListener("click", displayRegForm);
-  closeBtn.addEventListener("click", closeRegForm);
-  cancelBut.addEventListener("click", closeRegForm);
+  domElements.subButt.addEventListener("click", registerbuttonHandler);
+  domElements.regButt.addEventListener("click", displayRegForm);
+  domElements.closeBtn.addEventListener("click", closeRegForm);
+  domElements.cancelBut.addEventListener("click", closeRegForm);
 };
 
-//Test with other marks on map
+//Puts current position on Map
 const initiateMap = async function () {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -85,60 +78,42 @@ const initiateMap = async function () {
 };
 
 const overlayHandler = function () {
-  const newTaskBut = document.getElementById("newTask");
-  const closeBtn = document.getElementById("close");
-  const overlay_cancel = document.getElementById("overlay-cancelar");
   function open() {
     newTaskForm.openModal();
   }
   function closeModal() {
     newTaskForm.closeModal();
   }
-  newTaskBut.addEventListener("click", open);
-  closeBtn.addEventListener("click", closeModal);
-  overlay_cancel.addEventListener("click", closeModal);
+  domElements.newTaskBut.addEventListener("click", open);
+  domElements.closeBtn.addEventListener("click", closeModal);
+  domElements.new_task_form_cancel.addEventListener("click", closeModal);
 };
 
 const submitTask = function () {
-  const submitBut = document.getElementById("overlay-aceptar");
-
-  // let user = sessionStorage.getItem("user"); //Aparently we don't need ID, since back-end automatically associates it
-
   const submitTask_ = function () {
     let pos = sessionStorage.getItem("coords"); //object containing lat and long
     let posJSON = JSON.parse(pos);
-    // const userId = JSON.parse(user)["id"];
-    const eventTitle = document.getElementById("title").value;
-    const eventDate = document.getElementById("date").value;
-    const eventPrice = document.getElementById("amount").value;
-    const eventAddress = document.getElementById("address").value;
-    const eventDescription = document.getElementById("description").value;
     const pos_lat = posJSON["lat"];
     const pos_lng = posJSON["lng"];
     postEvent(
-      //funciton from models.js
-      // userId,
-      eventTitle,
+      domElements.eventTitle.value,
       pos_lat,
       pos_lng,
-      eventDate,
-      eventDescription,
-      eventPrice,
-      eventAddress
+      domElements.eventDate.value,
+      domElements.eventDescription.value,
+      domElements.eventPrice.value,
+      domElements.eventAddress.value
     );
     newTaskForm.closeModal();
   };
 
-  submitBut.addEventListener("click", submitTask_);
+  domElements.submitBut.addEventListener("click", submitTask_);
 };
 
 // Loads marks on map and it has the handlers when clicking on them
 const marksOnMap = async function () {
-  const closeModal = document.getElementById("close");
   const marksOnMap = await getMarks();
-  //create a function to group markers with same or similar coords
-  // helper functions
-
+  let clusterDensity = 0.00003;
   function open() {
     markerInfoView.openModal();
   }
@@ -146,6 +121,7 @@ const marksOnMap = async function () {
     markerInfoView.closeModal();
   }
 
+  //Positions markers on Map based on the object received on the Models.js
   marksOnMap.forEach((coord) => {
     const marker = new google.maps.Marker({
       position: { lat: coord.lat, lng: coord.long },
@@ -166,8 +142,6 @@ const marksOnMap = async function () {
         user_name: coord.user_name,
       },
     });
-    all_markers.push(marker);
-    console.log(all_markers);
     const title = document.getElementById("popup-title");
     const date = document.getElementById("popup-date");
     const amount = document.getElementById("popup-amount");
@@ -185,10 +159,30 @@ const marksOnMap = async function () {
       desc.innerHTML += ` ${marker.data.descrip}`;
       coords.innerHTML += ` Latitude: ${marker.data.lat}, Longitude: ${marker.data.long}`;
       creator.innerHTML += ` ${marker.data.user_name}`;
+
+      //Pending: Send every filtered marker to a html list
+      function filtererOnClick(lat, long) {
+        console.log(`This is inside the function${lat},${long}`);
+        const filteredMarksOnMap = marksOnMap.filter((mark) => {
+          return (
+            mark.lat >= lat - clusterDensity &&
+            mark.lat <= lat + clusterDensity &&
+            mark.long >= long - clusterDensity &&
+            mark.long <= long + clusterDensity
+          );
+        });
+        return filteredMarksOnMap;
+      }
+      const filteredClicked = filtererOnClick(
+        marker.data.lat,
+        marker.data.long
+      );
+      console.log(filteredClicked);
+
       open();
     });
     //Close the modal of the marker info
-    closeModal.addEventListener("click", function () {
+    domElements.closeModal.addEventListener("click", function () {
       title.innerHTML = "Title:";
       date.innerHTML = "Created:";
       amount.innerHTML = "Amount:";
@@ -199,24 +193,17 @@ const marksOnMap = async function () {
       close();
     });
   });
-
-  //Marker Cluster not working
-  const markerCluster = new MarkerClusterer(map, all_markers, {
-    imagePath: "https://cdn-icons-png.flaticon.com/512/4807/4807598.png",
-  });
 };
 
+//Re-Arrange darkView with a MVC logic
 const toggleDarkView = function () {
-  //Check the logic under MVC
-  const toggleBtn = document.getElementById("toggleBtn");
   toggleBtn.addEventListener("click", () => {
     if (!dark) {
-      toggleBtn.classList.add("dark-mode");
+      domElements.toggleBtn.classList.add("dark-mode");
       map.setOptions({ styles: nightMode });
       dark = true;
     } else {
-      toggleBtn.classList.remove("dark-mode");
-      console.log("Removing dark-mode class");
+      domElements.toggleBtn.classList.remove("dark-mode");
       map.setOptions({ styles: [] });
       dark = false;
     }
@@ -224,7 +211,6 @@ const toggleDarkView = function () {
 };
 
 // Controller set
-
 controlLogin();
 controlLogout();
 controlRegister();

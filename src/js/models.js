@@ -76,6 +76,6 @@ export const getMarks = async function () {
   const data = await response.json();
   const marksOnMap = data;
   console.log(marksOnMap);
-
+  // End of fn
   return marksOnMap; // Export the marksOnMap array
 };

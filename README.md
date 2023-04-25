@@ -3,8 +3,6 @@
 ## Instalations and configurations:
 
 - npm install
-- npm i parcel -D (ultima version de parsel)
-- npm i sass (no se esta usando aun)
 - marker clusterer on index.html
 
 ## Other configurations
@@ -26,6 +24,4 @@
 - Not allow the display of creating event if not logged in.
 - Incorportate an API which check if used email is valid.
 - Check CSS for formating input fields.
-- Re-order code:
-
-1. All html elements of every function of controller.js could be on helpers and called from there.
+- Keep logged user name when site is reloaded

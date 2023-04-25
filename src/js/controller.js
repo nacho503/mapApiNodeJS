@@ -1,10 +1,12 @@
 import { getUser, postEvent, getMarks, createUser } from "./models.js";
 import { nightMode } from "./helpers/nightMode.js";
 import loggedUserView from "./Views/loggedUserView.js";
-import newTaskForm from "./Views/newTaskForm.js";
 import markerInfoView from "./Views/markerInfoView.js";
-import registerView from "./Views/registerView.js";
+import newTaskForm from "./Views/newTaskForm.js";
 import DomElements from "./helpers/domElements.js";
+
+import registerView from "./Views/registerView.js";
+import filteredMarkersList from "./Views/filteredMarkersList.js";
 
 //Helpers (consider moving them)
 let domElements = new DomElements();
@@ -23,24 +25,20 @@ const controlLogin = async function () {
   try {
     domElements.logInSubmit.addEventListener("click", logInSub);
   } catch (err) {}
+  //Makes user view persistent when browser is refreshed
+  window.onload = loggedUserView.insertUserName();
 };
 
 //Logout fn, removes token from sessionStorage
 const controlLogout = function () {
-  function logOut() {
-    loggedUserView.logoutUser();
-  }
-  domElements.logoutButt.addEventListener("click", logOut);
+  domElements.logoutButt.addEventListener(
+    "click",
+    loggedUserView.logoutUser.bind(loggedUserView)
+  );
 };
 
 const controlRegister = function () {
-  function displayRegForm() {
-    registerView.showRegForm();
-  }
-  function closeRegForm() {
-    registerView.closeRegForm();
-  }
-
+  //Sends content of the form to the models.js and to backend
   function registerbuttonHandler() {
     createUser(
       domElements.emailIn.value,
@@ -50,9 +48,18 @@ const controlRegister = function () {
     registerView.closeRegForm();
   }
   domElements.subButt.addEventListener("click", registerbuttonHandler);
-  domElements.regButt.addEventListener("click", displayRegForm);
-  domElements.closeBtn.addEventListener("click", closeRegForm);
-  domElements.cancelBut.addEventListener("click", closeRegForm);
+  domElements.regButt.addEventListener(
+    "click",
+    registerView.showRegForm.bind(registerView)
+  );
+  domElements.closeBtn.addEventListener(
+    "click",
+    registerView.closeRegForm.bind(registerView)
+  );
+  domElements.cancelBut.addEventListener(
+    "click",
+    registerView.closeRegForm.bind(registerView)
+  );
 };
 
 //Puts current position on Map
@@ -72,21 +79,25 @@ const initiateMap = async function () {
         position: pos,
         map: map,
       });
-      all_markers.push(markerSelf);
     });
   }
 };
 
 const overlayHandler = function () {
-  function open() {
-    newTaskForm.openModal();
-  }
-  function closeModal() {
-    newTaskForm.closeModal();
-  }
-  domElements.newTaskBut.addEventListener("click", open);
-  domElements.closeBtn.addEventListener("click", closeModal);
-  domElements.new_task_form_cancel.addEventListener("click", closeModal);
+  //Opens new Task form
+  domElements.newTaskBut.addEventListener(
+    "click",
+    newTaskForm.openModal.bind(newTaskForm)
+  );
+  //Both close task, marker or event form
+  domElements.closeBtn.addEventListener(
+    "click",
+    newTaskForm.closeModal.bind(newTaskForm)
+  );
+  domElements.new_task_form_cancel.addEventListener(
+    "click",
+    newTaskForm.closeModal.bind(newTaskForm)
+  );
 };
 
 const submitTask = function () {
@@ -160,9 +171,8 @@ const marksOnMap = async function () {
       coords.innerHTML += ` Latitude: ${marker.data.lat}, Longitude: ${marker.data.long}`;
       creator.innerHTML += ` ${marker.data.user_name}`;
 
-      //Pending: Send every filtered marker to a html list
+      //Function to filter every marker according to a max and min lat and long
       function filtererOnClick(lat, long) {
-        console.log(`This is inside the function${lat},${long}`);
         const filteredMarksOnMap = marksOnMap.filter((mark) => {
           return (
             mark.lat >= lat - clusterDensity &&
@@ -179,6 +189,18 @@ const marksOnMap = async function () {
       );
       console.log(filteredClicked);
 
+      // Function to append
+      function createMarkerList(markerData) {
+        domElements.markersListContainer.style.display = "flex";
+        const markerList = document.createElement("ul");
+        markerList.classList.add("marker-list");
+
+        filteredMarkersList.markersListMaker(markerData, markerList);
+        domElements.markersListContainer.appendChild(markerList);
+      }
+
+      // end of Function to append
+      createMarkerList(filteredClicked);
       open();
     });
     //Close the modal of the marker info

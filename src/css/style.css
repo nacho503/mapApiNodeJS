@@ -158,7 +158,7 @@ body {
   left: 50%;
   margin-top: -100px;
   margin-left: -150px;
-  background-color: #075e54;
+  background-color: #ffffff;
   border-radius: 10px;
   text-align: center;
   z-index: 11;
@@ -336,3 +336,44 @@ nav #toggleBtn:hover {
 }
 
 /* End of CSS for Popup */
+/* Filtered markers */
+#filtered-markers-container {
+  display: none;
+  /* transparent */
+  position: absolute;
+  top: 10rem;
+  overflow-y: auto;
+  background-color: transparent;
+  z-index: 1
+}
+}
+.marker-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.marker-list-item {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.marker-list-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.marker-list-address,
+.marker-list-date,
+.marker-list-amount,
+.marker-list-descrip {
+  font-size: 14px;
+  color: gray;
+}
+
+/* END OF Filtered markers */

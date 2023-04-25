@@ -30,6 +30,10 @@ export default class DomElements {
     // End of Overlay
     this.closeModal = document.getElementById("close");
     this.popupTitle = document.getElementById("popup-title");
-    // Add other DOM elements here
+    //  Markers List
+    this.markersListContainer = document.getElementById(
+      "filtered-markers-container"
+    );
+    // End of markers list
   }
 }

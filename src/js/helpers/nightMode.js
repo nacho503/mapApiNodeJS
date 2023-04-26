@@ -1,6 +1,7 @@
 //Night mode code should be inside map.styles of the object:
+// import DomElements from "./domElements";
 
-const nightMode = [
+const nightModeStyles = [
   { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
   { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
   { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
@@ -81,4 +82,18 @@ const nightMode = [
   },
 ];
 
-export { nightMode };
+const darkViewFunction = function (togglerHTML, map, dark) {
+  togglerHTML.addEventListener("click", () => {
+    if (!dark) {
+      togglerHTML.classList.add("dark-mode");
+      map.setOptions({ styles: nightModeStyles });
+      dark = true;
+    } else {
+      togglerHTML.classList.remove("dark-mode");
+      map.setOptions({ styles: [] });
+      dark = false;
+    }
+  });
+};
+
+export { nightModeStyles, darkViewFunction };

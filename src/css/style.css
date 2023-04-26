@@ -344,9 +344,9 @@ nav #toggleBtn:hover {
   top: 10rem;
   overflow-y: auto;
   background-color: transparent;
-  z-index: 1
+  z-index: 1;
 }
-}
+
 .marker-list {
   list-style: none;
   padding: 0;
@@ -374,6 +374,26 @@ nav #toggleBtn:hover {
 .marker-list-descrip {
   font-size: 14px;
   color: gray;
+}
+
+#filtered-markers-container-close-button {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #25d366;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+#filtered-markers-container-close-button:hover {
+  background-color: #128c7e;
 }
 
 /* END OF Filtered markers */

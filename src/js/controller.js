@@ -1,5 +1,5 @@
 import { getUser, postEvent, getMarks, createUser } from "./models.js";
-import { nightMode } from "./helpers/nightMode.js";
+import { nightModeStyles } from "./helpers/nightMode.js";
 import loggedUserView from "./Views/loggedUserView.js";
 import markerInfoView from "./Views/markerInfoView.js";
 import newTaskForm from "./Views/newTaskForm.js";
@@ -125,104 +125,75 @@ const submitTask = function () {
 const marksOnMap = async function () {
   const marksOnMap = await getMarks();
   let clusterDensity = 0.00003;
-  function open() {
-    markerInfoView.openModal();
-  }
-  function close() {
-    markerInfoView.closeModal();
-  }
+  //Positions markers on Map based on the object received on the Models.js, and filters markers to show a list of markers
+  // nearby the one that is clicked
+  filteredMarkersList.markersHandlerClicked(marksOnMap, map);
 
-  //Positions markers on Map based on the object received on the Models.js
-  marksOnMap.forEach((coord) => {
-    const marker = new google.maps.Marker({
-      position: { lat: coord.lat, lng: coord.long },
-      map: map,
-      icon: {
-        url: "https://cdn-icons-png.flaticon.com/128/10204/10204362.png",
-        scaledSize: new google.maps.Size(40, 40),
-      },
-      data: {
-        id: coord.id,
-        address: coord.address,
-        title: coord.title,
-        amount: coord.amount,
-        date: coord.date,
-        descrip: coord.descrip,
-        lat: coord.lat,
-        long: coord.long,
-        user_name: coord.user_name,
-      },
-    });
-    const title = document.getElementById("popup-title");
-    const date = document.getElementById("popup-date");
-    const amount = document.getElementById("popup-amount");
-    const address = document.getElementById("popup-address");
-    const desc = document.getElementById("popup-description");
-    const coords = document.getElementById("popup-coordinates");
-    const creator = document.getElementById("popup-creator");
+  // function open() {
+  //   markerInfoView.openModal();
+  // }
+  // function close() {
+  //   markerInfoView.closeModal();
+  // }
 
-    //Add event listener for the marker when clicked and sends the data to the html:
-    marker.addListener("click", function () {
-      title.innerHTML += ` ${marker.data.title}`;
-      date.innerHTML += ` ${marker.data.date}`;
-      amount.innerHTML += ` ${marker.data.amount}`;
-      address.innerHTML += ` ${marker.data.address}`;
-      desc.innerHTML += ` ${marker.data.descrip}`;
-      coords.innerHTML += ` Latitude: ${marker.data.lat}, Longitude: ${marker.data.long}`;
-      creator.innerHTML += ` ${marker.data.user_name}`;
+  // const title = document.getElementById("popup-title");
+  // const date = document.getElementById("popup-date");
+  // const amount = document.getElementById("popup-amount");
+  // const address = document.getElementById("popup-address");
+  // const desc = document.getElementById("popup-description");
+  // const coords = document.getElementById("popup-coordinates");
+  // const creator = document.getElementById("popup-creator");
+  //Add event listener for the marker when clicked and sends the data to the html:
+  // marker.addListener("click", function () {
 
-      //Function to filter every marker according to a max and min lat and long
-      function filtererOnClick(lat, long) {
-        const filteredMarksOnMap = marksOnMap.filter((mark) => {
-          return (
-            mark.lat >= lat - clusterDensity &&
-            mark.lat <= lat + clusterDensity &&
-            mark.long >= long - clusterDensity &&
-            mark.long <= long + clusterDensity
-          );
-        });
-        return filteredMarksOnMap;
-      }
-      const filteredClicked = filtererOnClick(
-        marker.data.lat,
-        marker.data.long
-      );
-      console.log(filteredClicked);
+  // title.innerHTML += ` ${marker.data.title}`;
+  // date.innerHTML += ` ${marker.data.date}`;
+  // amount.innerHTML += ` ${marker.data.amount}`;
+  // address.innerHTML += ` ${marker.data.address}`;
+  // desc.innerHTML += ` ${marker.data.descrip}`;
+  // coords.innerHTML += ` Latitude: ${marker.data.lat}, Longitude: ${marker.data.long}`;
+  // creator.innerHTML += ` ${marker.data.user_name}`;
 
-      // Function to append
-      function createMarkerList(markerData) {
-        domElements.markersListContainer.style.display = "flex";
-        const markerList = document.createElement("ul");
-        markerList.classList.add("marker-list");
+  // const filteredClicked = filtererOnClick(
+  //   marker.data.lat,
+  //   marker.data.long
+  // );
+  // console.log(filteredClicked);
 
-        filteredMarkersList.markersListMaker(markerData, markerList);
-        domElements.markersListContainer.appendChild(markerList);
-      }
+  // Function to append
+  // function createMarkerList(markerData) {
+  //   domElements.markersListContainer.style.display = "flex";
+  //   const markerList = document.createElement("ul");
+  //   markerList.classList.add("marker-list");
 
-      // end of Function to append
-      createMarkerList(filteredClicked);
-      open();
-    });
-    //Close the modal of the marker info
-    domElements.closeModal.addEventListener("click", function () {
-      title.innerHTML = "Title:";
-      date.innerHTML = "Created:";
-      amount.innerHTML = "Amount:";
-      address.innerHTML = "Address:";
-      desc.innerHTML = "Description:";
-      coords.innerHTML = "Coordinates:";
-      creator.innerHTML = "Creator:";
-      close();
-    });
-  });
+  //   filteredMarkersList.markersListMaker(markerData, markerList);
+  //   domElements.markersListContainer.appendChild(markerList);
+  // }
+
+  // end of Function to append
+  //   createMarkerList(filteredClicked);
+  //   // open();
+  // });
+  //Close the modal of the marker info
+  // domElements.closeModal.addEventListener("click", function () {
+  //   title.innerHTML = "Title:";
+  //   date.innerHTML = "Created:";
+  //   amount.innerHTML = "Amount:";
+  //   address.innerHTML = "Address:";
+  //   desc.innerHTML = "Description:";
+  //   coords.innerHTML = "Coordinates:";
+  //   creator.innerHTML = "Creator:";
+  //   close();
+  // });
+  // });
 };
 
 //Re-Arrange darkView with a MVC logic
-const toggleDarkView = function () {
-  toggleBtn.addEventListener("click", () => {
+const toggleDarkViewController = function () {
+  domElements.toggleBtn.addEventListener("click", () => {
     if (!dark) {
       domElements.toggleBtn.classList.add("dark-mode");
-      map.setOptions({ styles: nightMode });
+      map.setOptions({ styles: nightModeStyles });
       dark = true;
     } else {
       domElements.toggleBtn.classList.remove("dark-mode");
@@ -240,4 +211,4 @@ initiateMap();
 marksOnMap();
 overlayHandler();
 submitTask();
-toggleDarkView(); //Check the logic under MVC
+toggleDarkViewController(); //Check the logic under MVC

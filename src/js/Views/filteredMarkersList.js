@@ -1,6 +1,4 @@
 class filteredMarkersList {
-  // This function receives markerData that is already filtered according the range given and
-  // it receives markerList html element
   constructor() {
     this.filteredClicked = [];
     this.markersOnMap = [];
@@ -13,12 +11,14 @@ class filteredMarkersList {
     const markersContainer = document.getElementById(
       "filtered-markers-container"
     );
-    const markerList = document.createElement("ul");
+    const markerList = document.getElementById("marker-list");
+    const listItem = document.getElementById("marker-list-item");
     butClose.addEventListener("click", function () {
-      markersContainer.style.display = "none";
+      // if (markerList && markersContainer.contains(markerList)) {
+      //   markersContainer.removeChild(markerList);
+      // }
       this.filteredClicked = [];
-      markerList.remove();
-      console.log(this.filteredClicked);
+      markersContainer.style.display = "none";
     });
   }
 
@@ -53,93 +53,81 @@ class filteredMarkersList {
     let clusterDensity = 0.00003;
     for (let marker of markersOnMap) {
       google.maps.event.addListener(marker, "click", () => {
-        console.log(marker.data.lat);
+        let lat = marker.data.lat;
+        let lng = marker.data.long;
+        //1) calls the method to filter and return a filtered array of markers
+        this.filteredClicked = this.markersFilterer(
+          lat,
+          lng,
+          markersOnMap,
+          clusterDensity
+        );
+        console.log(this.filteredClicked);
+        // 2) this method uses the result of the previous to create the html elements
+        this.markersListPopUp(this.filteredClicked);
       });
     }
   }
 
   //markers filterer: Receives a marker which is the one clicked, and returns a lust of markes on
   //an specific lat long range
-  markersFilterer() {}
-
-  markersHandlerClicked(markersData, googlemap) {
-    let clusterDensity = 0.00003;
-    markersData.forEach((coord) => {
-      //Logic inside marker scope, it filters the whole array of markers, based on clusterDensity
-      marker.addListener("click", function () {
-        function filtererOnClick(lat, long) {
-          let filteredMarksOnMap = markersData.filter((mark) => {
-            return (
-              mark.lat >= lat - clusterDensity &&
-              mark.lat <= lat + clusterDensity &&
-              mark.long >= long - clusterDensity &&
-              mark.long <= long + clusterDensity
-            );
-          });
-          return filteredMarksOnMap;
-        }
-        // Object to pass into createMarkerList
-        this.filteredClicked = filtererOnClick(
-          marker.data.lat,
-          marker.data.long
-        );
-
-        //Function to append filtered markers to dom elements
-        function createMarkerList(markerData) {
-          const markersContainer = document.getElementById(
-            "filtered-markers-container"
-          );
-          const butClose = document.getElementById(
-            "close-filtered-markers-container"
-          );
-          butClose.style.display = "block";
-          markersContainer.style.display = "flex";
-          const markerList = document.createElement("ul");
-          markerList.classList.add("marker-list");
-          //
-          for (const marker of markerData) {
-            const listItem = document.createElement("li");
-            listItem.classList.add("marker-list-item");
-
-            const title = document.createElement("h3");
-            title.classList.add("marker-list-item-title");
-            title.textContent = marker.title;
-            listItem.appendChild(title);
-
-            const address = document.createElement("p");
-            address.classList.add("marker-list-item-address");
-            address.textContent = marker.address;
-            listItem.appendChild(address);
-
-            const date = document.createElement("p");
-            date.classList.add("marker-list-item-date");
-            date.textContent = marker.date;
-            listItem.appendChild(date);
-
-            const amount = document.createElement("p");
-            amount.classList.add("marker-list-item-amount");
-            amount.textContent = marker.amount;
-            listItem.appendChild(amount);
-
-            const description = document.createElement("p");
-            description.classList.add("marker-list-item-description");
-            description.textContent = marker.description;
-            listItem.appendChild(description);
-
-            markerList.appendChild(listItem);
-          }
-
-          markersContainer.appendChild(markerList);
-        }
-
-        filtererOnClick(marker.data.lat, marker.data.long);
-        createMarkerList(this.filteredClicked);
-        markersData = [];
-        //End of marker.addEventLisyener('click)
-      });
-
-      //End of markersData.ForEach
+  markersFilterer(lat, lng, markersOnMap, clusterDensity) {
+    let filteredMarks = markersOnMap.filter((mark) => {
+      return (
+        mark.data.lat >= lat - clusterDensity &&
+        mark.data.lat <= lat + clusterDensity &&
+        mark.data.long >= lng - clusterDensity &&
+        mark.data.long <= lng + clusterDensity
+      );
     });
+    return filteredMarks;
+  }
+
+  markersListPopUp(filteredMarks) {
+    const markersContainer = document.getElementById(
+      "filtered-markers-container"
+    );
+    markersContainer.style.display = "flex";
+    const butClose = document.getElementById(
+      "close-filtered-markers-container"
+    );
+    butClose.style.display = "block";
+    let markerList = document.getElementById("marker-list");
+    if (!markerList) {
+      markerList = document.createElement("ul");
+      markerList.setAttribute("id", "marker-list");
+      markerList.classList.add("marker-list");
+      markersContainer.appendChild(markerList);
+    }
+    markerList.innerHTML = ""; // Clear the existing list items
+
+    //Iterates through the filtered data to display the html
+    for (const marker of filteredMarks) {
+      const listItem = document.createElement("li");
+      listItem.classList.add("marker-list-item");
+      const title = document.createElement("h3");
+      title.classList.add("marker-list-item-title");
+      title.textContent = `Title: ${marker.data.title}`;
+      listItem.appendChild(title);
+
+      const address = document.createElement("p");
+      address.classList.add("marker-list-item-address");
+      address.textContent = `Address: ${marker.data.address}`;
+      listItem.appendChild(address);
+
+      const date = document.createElement("p");
+      date.classList.add("marker-list-item-date");
+      date.textContent = `Date: ${marker.data.date}`;
+      listItem.appendChild(date);
+
+      const amount = document.createElement("p");
+      amount.classList.add("marker-list-item-amount");
+      amount.textContent = `Amount: ${marker.data.amount}`;
+      listItem.appendChild(amount);
+
+      markerList.appendChild(listItem);
+    }
+    markersContainer.appendChild(markerList);
   }
 }
 

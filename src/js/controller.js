@@ -130,48 +130,7 @@ const marksOnMapHandler = async function () {
   markersOnMap = filteredMarkersList.putMarkersOnMap(marksOnMap_, map);
   //Function to click on a specifi marker an get it's data
   filteredMarkersList.markerClickHandler(markersOnMap);
-
-  // filteredMarkersList.markersHandlerClicked(marksOnMap, map);
-
-  // filteredMarkersList.closeList();
-
-  // function open() {
-  //   markerInfoView.openModal();
-  // }
-  // function close() {
-  //   markerInfoView.closeModal();
-  // }
-
-  // const title = document.getElementById("popup-title");
-  // const date = document.getElementById("popup-date");
-  // const amount = document.getElementById("popup-amount");
-  // const address = document.getElementById("popup-address");
-  // const desc = document.getElementById("popup-description");
-  // const coords = document.getElementById("popup-coordinates");
-  // const creator = document.getElementById("popup-creator");
-  //Add event listener for the marker when clicked and sends the data to the html:
-  // marker.addListener("click", function () {
-
-  // title.innerHTML += ` ${marker.data.title}`;
-  // date.innerHTML += ` ${marker.data.date}`;
-  // amount.innerHTML += ` ${marker.data.amount}`;
-  // address.innerHTML += ` ${marker.data.address}`;
-  // desc.innerHTML += ` ${marker.data.descrip}`;
-  // coords.innerHTML += ` Latitude: ${marker.data.lat}, Longitude: ${marker.data.long}`;
-  // creator.innerHTML += ` ${marker.data.user_name}`;
-
-  //Close the modal of the marker info
-  // domElements.closeModal.addEventListener("click", function () {
-  //   title.innerHTML = "Title:";
-  //   date.innerHTML = "Created:";
-  //   amount.innerHTML = "Amount:";
-  //   address.innerHTML = "Address:";
-  //   desc.innerHTML = "Description:";
-  //   coords.innerHTML = "Coordinates:";
-  //   creator.innerHTML = "Creator:";
-  //   close();
-  // });
-  // });
+  filteredMarkersList.closeList();
 };
 
 //Re-Arrange darkView with a MVC logic

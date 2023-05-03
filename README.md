@@ -2,7 +2,7 @@
 
 <center>
 
-![alt text](img/screenshot1.png)
+![alt text](https://github.com/nacho503/mapApp/src/img/screenshot1.png)
 
 </center>
 

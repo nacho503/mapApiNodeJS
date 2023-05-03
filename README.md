@@ -2,7 +2,7 @@
 
 <center>
 
-![alt text](./img/screenshot1.png)
+![alt text](./src/img/screenshot1.png)
 
 </center>
 

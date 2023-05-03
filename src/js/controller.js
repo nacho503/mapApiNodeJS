@@ -12,6 +12,7 @@ import filteredMarkersList from "./Views/filteredMarkersList.js";
 let domElements = new DomElements();
 let map;
 let dark = false;
+let markersOnMap = [];
 
 //Login Function
 const controlLogin = async function () {
@@ -121,13 +122,18 @@ const submitTask = function () {
   domElements.submitBut.addEventListener("click", submitTask_);
 };
 
-// Loads marks on map and it has the handlers when clicking on them
-const marksOnMap = async function () {
-  const marksOnMap = await getMarks();
-  let clusterDensity = 0.00003;
-  //Positions markers on Map based on the object received on the Models.js, and filters markers to show a list of markers
-  // nearby the one that is clicked
-  filteredMarkersList.markersHandlerClicked(marksOnMap, map);
+// Loads marks on map
+const marksOnMapHandler = async function () {
+  //Get method from backend , and the result is assigned to marksOnMap
+  let marksOnMap_ = await getMarks();
+  //Positions markers on Map based on the object received on the Models.js
+  markersOnMap = filteredMarkersList.putMarkersOnMap(marksOnMap_, map);
+  //Function to click on a specifi marker an get it's data
+  filteredMarkersList.markerClickHandler(markersOnMap);
+
+  // filteredMarkersList.markersHandlerClicked(marksOnMap, map);
+
+  // filteredMarkersList.closeList();
 
   // function open() {
   //   markerInfoView.openModal();
@@ -154,26 +160,6 @@ const marksOnMap = async function () {
   // coords.innerHTML += ` Latitude: ${marker.data.lat}, Longitude: ${marker.data.long}`;
   // creator.innerHTML += ` ${marker.data.user_name}`;
 
-  // const filteredClicked = filtererOnClick(
-  //   marker.data.lat,
-  //   marker.data.long
-  // );
-  // console.log(filteredClicked);
-
-  // Function to append
-  // function createMarkerList(markerData) {
-  //   domElements.markersListContainer.style.display = "flex";
-  //   const markerList = document.createElement("ul");
-  //   markerList.classList.add("marker-list");
-
-  //   filteredMarkersList.markersListMaker(markerData, markerList);
-  //   domElements.markersListContainer.appendChild(markerList);
-  // }
-
-  // end of Function to append
-  //   createMarkerList(filteredClicked);
-  //   // open();
-  // });
   //Close the modal of the marker info
   // domElements.closeModal.addEventListener("click", function () {
   //   title.innerHTML = "Title:";
@@ -208,7 +194,7 @@ controlLogin();
 controlLogout();
 controlRegister();
 initiateMap();
-marksOnMap();
+marksOnMapHandler();
 overlayHandler();
 submitTask();
 toggleDarkViewController(); //Check the logic under MVC

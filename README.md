@@ -1,5 +1,11 @@
 # Front-End of "mapApp" using "Model View Controler" with Vanila JS
 
+<center>
+
+![alt text](img/screenshot1.png)
+
+</center>
+
 ## Instalations and configurations:
 
 - npm install

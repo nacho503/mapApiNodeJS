@@ -1,9 +1,28 @@
 class filteredMarkersList {
   // This function receives markerData that is already filtered according the range given and
   // it receives markerList html element
+  constructor() {
+    this.filteredClicked = [];
+    this.markersOnMap = [];
+  }
 
-  markersHandlerClicked(markersData, googlemap) {
-    let clusterDensity = 0.00003;
+  closeList() {
+    const butClose = document.getElementById(
+      "close-filtered-markers-container"
+    );
+    const markersContainer = document.getElementById(
+      "filtered-markers-container"
+    );
+    const markerList = document.createElement("ul");
+    butClose.addEventListener("click", function () {
+      markersContainer.style.display = "none";
+      this.filteredClicked = [];
+      markerList.remove();
+      console.log(this.filteredClicked);
+    });
+  }
+
+  putMarkersOnMap(markersData, googlemap) {
     markersData.forEach((coord) => {
       const marker = new google.maps.Marker({
         position: { lat: coord.lat, lng: coord.long },
@@ -24,6 +43,28 @@ class filteredMarkersList {
           user_name: coord.user_name,
         },
       });
+      this.markersOnMap.push(marker);
+    });
+    return this.markersOnMap;
+  }
+
+  //Receives the array of markers and logs the clicked
+  markerClickHandler(markersOnMap) {
+    let clusterDensity = 0.00003;
+    for (let marker of markersOnMap) {
+      google.maps.event.addListener(marker, "click", () => {
+        console.log(marker.data.lat);
+      });
+    }
+  }
+
+  //markers filterer: Receives a marker which is the one clicked, and returns a lust of markes on
+  //an specific lat long range
+  markersFilterer() {}
+
+  markersHandlerClicked(markersData, googlemap) {
+    let clusterDensity = 0.00003;
+    markersData.forEach((coord) => {
       //Logic inside marker scope, it filters the whole array of markers, based on clusterDensity
       marker.addListener("click", function () {
         function filtererOnClick(lat, long) {
@@ -38,7 +79,7 @@ class filteredMarkersList {
           return filteredMarksOnMap;
         }
         // Object to pass into createMarkerList
-        const filteredClicked = filtererOnClick(
+        this.filteredClicked = filtererOnClick(
           marker.data.lat,
           marker.data.long
         );
@@ -48,6 +89,10 @@ class filteredMarkersList {
           const markersContainer = document.getElementById(
             "filtered-markers-container"
           );
+          const butClose = document.getElementById(
+            "close-filtered-markers-container"
+          );
+          butClose.style.display = "block";
           markersContainer.style.display = "flex";
           const markerList = document.createElement("ul");
           markerList.classList.add("marker-list");
@@ -87,8 +132,9 @@ class filteredMarkersList {
           markersContainer.appendChild(markerList);
         }
 
-        createMarkerList(filteredClicked);
         filtererOnClick(marker.data.lat, marker.data.long);
+        createMarkerList(this.filteredClicked);
+        markersData = [];
         //End of marker.addEventLisyener('click)
       });
 

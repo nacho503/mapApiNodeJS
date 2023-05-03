@@ -396,4 +396,8 @@ nav #toggleBtn:hover {
   background-color: #128c7e;
 }
 
+#close-filtered-markers-container {
+  display: none;
+}
+
 /* END OF Filtered markers */
